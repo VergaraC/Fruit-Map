@@ -8,7 +8,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <!--Todos os EditTexts vao virar Combo boxes dps  -->
+
     <TextView
         android:id="@+id/titulo"
         android:layout_width="300dp"
@@ -39,7 +39,8 @@
         android:layout_height="40dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="250dp"
-        android:hint="@string/tipo_de_arvore"
+        android:prompt="@string/tipo_de_arvore"
+        android:entries="@array/labels_tipos"
         android:textSize="16sp" />
     <Spinner
         android:id="@+id/acesso"
@@ -48,6 +49,7 @@
         android:layout_marginLeft="300dp"
         android:layout_marginTop="250dp"
         android:hint="@string/acesso"
+        android:entries="@array/labels_acesso"
         android:textSize="16sp" />
     <Spinner
         android:id="@+id/quali_fruta"
@@ -56,6 +58,7 @@
         android:layout_marginLeft="300dp"
         android:layout_marginTop="350dp"
         android:hint="@string/qualidade_da_fruta"
+        android:entries="@array/labels_quali"
         android:textSize="16sp" />
     <Spinner
         android:id="@+id/quant_fruta"
@@ -64,6 +67,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="350dp"
         android:hint="@string/quantidade_de_frutas"
+        android:entries="@array/labels_quant"
         android:textSize="16sp" />
 
     <EditText
