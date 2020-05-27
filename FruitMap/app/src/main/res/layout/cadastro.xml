@@ -35,9 +35,9 @@
 
     <Spinner
         android:id="@+id/tipo"
-        android:layout_width="140dp"
+        android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_marginStart="38dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="235dp"
         android:entries="@array/labels_tipos"
         android:prompt="@string/tipo_de_arvore"
@@ -45,40 +45,37 @@
 
     <Spinner
         android:id="@+id/acesso"
-        android:layout_width="150dp"
+        android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="239dp"
-        android:layout_marginEnd="29dp"
+        android:layout_marginTop="280dp"
+        android:layout_centerHorizontal="true"
         android:entries="@array/labels_acesso"
         android:hint="@string/acesso"
         android:textSize="16sp" />
 
     <Spinner
         android:id="@+id/quali_fruta"
-        android:layout_width="200dp"
+        android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="302dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="330dp"
         android:entries="@array/labels_quali"
         android:hint="@string/qualidade_da_fruta"
         android:textSize="16sp" />
 
     <Spinner
         android:id="@+id/quant_fruta"
-        android:layout_width="300dp"
+        android:layout_width="220dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="372dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="375dp"
         android:entries="@array/labels_quant"
         android:hint="@string/quantidade_de_frutas"
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/extra"
+        android:inputType="textAutoComplete"
         android:layout_width="400dp"
         android:layout_height="100dp"
         android:layout_marginTop="420dp"
