@@ -2,6 +2,7 @@ package com.example.fruitmap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,22 +39,13 @@ public class Cadastro extends AppCompatActivity {
                 String quantCadastro = quant.getSelectedItem().toString();
                 String tipoCadastro = tipo.getSelectedItem().toString();
                 Toast.makeText(getApplicationContext(), "O item selecionado foi "+ acessoCadastro + ", " + qualiCadastro + ", " + quantCadastro + ", " + tipoCadastro, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Cadastro.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
-        //tipo.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //acesso.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //quant.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //quali.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+
     }
 
-    /*@Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-    }*/
 
 }
