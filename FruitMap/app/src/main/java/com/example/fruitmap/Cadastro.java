@@ -28,7 +28,6 @@ public class Cadastro extends AppCompatActivity {
         //acesso.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         //quant.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         //quali.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-
     }
 
     //@Override
