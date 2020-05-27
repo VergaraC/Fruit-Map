@@ -18,14 +18,24 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
 
+    public void startCadastroActivity() {
+        Intent startCadastroActivity = new Intent(this, Cadastro.class);
+        startActivity(startCadastroActivity);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button cad = findViewById(R.id.cadastro);
+        cad.setOnClickListener((view) -> {
+            startCadastroActivity();
+        });
+
         if (isServicesOK()){
             init();
         }
+      }
     }
 
     private void init(){

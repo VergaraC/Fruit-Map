@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "375595773771",
+    "firebase_url": "https://fruit-map-c3403.firebaseio.com",
+    "project_id": "fruit-map-c3403",
+    "storage_bucket": "fruit-map-c3403.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375595773771:android:0794448305ea0644c3c2ce",
+        "android_client_info": {
+          "package_name": "com.example.fruitmap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375595773771-mpdk18tmbcjdats19tekjc1s9skevlhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtGFI3oENS_BxsdGudvt3Tr31UnKfqqqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375595773771-mpdk18tmbcjdats19tekjc1s9skevlhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
