@@ -20,17 +20,14 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.cadastro);
 
         Spinner tipo = (Spinner) findViewById(R.id.tipo);
-        // tipo click listener
-        tipo.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        Spinner acesso = (Spinner) findViewById(R.id.acesso);
-        // acesso click listener
-        acesso.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        Spinner quant = (Spinner) findViewById(R.id.quant_fruta);
-        // quant click listener
-        quant.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         Spinner quali = (Spinner) findViewById(R.id.quali_fruta);
-        // quali click listener
-        quali.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        Spinner acesso = (Spinner) findViewById(R.id.acesso);
+        Spinner quant = (Spinner) findViewById(R.id.quant_fruta);
+
+        //tipo.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        //acesso.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        //quant.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        //quali.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
 
     }
 
