@@ -13,10 +13,12 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private static final int ERROR_DIALOG_REQUEST = 9001;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        Button buttonMap = (Button) findViewById(R.id.btnMap);
+        Button buttonMap = findViewById(R.id.btnMap);
+        Button cad = findViewById(R.id.cadastro);
+
+        cad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Cadastro.class);
+                startActivity(intent);
+            }
+        });
+
         buttonMap.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
