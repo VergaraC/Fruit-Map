@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FruitMap</string>
+    <string name="google_maps_API_key">AIzaSyA8b5xzIIg4OA9V5aPPOVPHwfeR31gdYx4</string>
 </resources>
