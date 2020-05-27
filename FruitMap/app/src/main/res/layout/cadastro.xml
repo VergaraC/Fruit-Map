@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Cadastro"
     android:orientation="vertical">
 
-    <!--Todos os EditTexts vao virar Combo boxes dps  -->
+
     <TextView
         android:id="@+id/titulo"
         android:layout_width="300dp"
@@ -35,34 +35,45 @@
 
     <Spinner
         android:id="@+id/tipo"
-        android:layout_width="40dp"
+        android:layout_width="140dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="250dp"
-        android:hint="@string/tipo_de_arvore"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="235dp"
+        android:entries="@array/labels_tipos"
+        android:prompt="@string/tipo_de_arvore"
         android:textSize="16sp" />
+
     <Spinner
         android:id="@+id/acesso"
-        android:layout_width="40dp"
+        android:layout_width="150dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="239dp"
+        android:layout_marginEnd="29dp"
+        android:entries="@array/labels_acesso"
         android:hint="@string/acesso"
         android:textSize="16sp" />
+
     <Spinner
         android:id="@+id/quali_fruta"
-        android:layout_width="40dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="302dp"
+        android:entries="@array/labels_quali"
         android:hint="@string/qualidade_da_fruta"
         android:textSize="16sp" />
+
     <Spinner
         android:id="@+id/quant_fruta"
-        android:layout_width="40dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="372dp"
+        android:entries="@array/labels_quant"
         android:hint="@string/quantidade_de_frutas"
         android:textSize="16sp" />
 

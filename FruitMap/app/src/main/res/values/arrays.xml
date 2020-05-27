@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="labels_tipos">
+        <item name="Laranjeira">Laranjeira</item>
+        <item name="Jabuticabeira">Jabuticabeira</item>
+        <item name="Macieira">Macieira</item>
+        <item name="Goiabeira">Goiabeira</item>
+        <item name="Mangueira">Mangueira</item>
+        <item name="Coqueiro ">Coqueiro</item>
+    </string-array>
+    <string-array name="labels_acesso">
+        <item name="0">Impossivel</item>
+        <item name="1">Muito de difil</item>
+        <item name="2">Dificil</item>
+        <item name="3">Sem problemas</item>
+        <item name="4">E so pegar do galho</item>
+    </string-array>
+    <string-array name="labels_quant">
+        <item name="0">Nao tem nenhuma fruta madura</item>
+        <item name="1">Tem uma ou outra</item>
+        <item name="2">Tem algumas</item>
+        <item name="3">Tem ate que bastante</item>
+        <item name="4">Ta lotada</item>
+    </string-array>
+    <string-array name="labels_quali">
+        <item name="0">Horrivel, nem comi</item>
+        <item name="1">Nao gostei</item>
+        <item name="2">Ok</item>
+        <item name="3">Gostasa</item>
+        <item name="4">Deliciosa</item>
+    </string-array>
+
+
+
+</resources>
+
