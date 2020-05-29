@@ -42,7 +42,7 @@
         android:layout_height="40dp"
         android:entries= "@array/labels_tipos"
         android:prompt= "@string/tipo_de_arvore"
-        android:textSize="16sp" />
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/acesso"
@@ -52,7 +52,7 @@
         android:layout_marginLeft="100dp"
         android:text="Acesso:"
         android:textSize="18sp"
-
+        android:textColor="bla"
         />
     <RatingBar
         android:id="@+id/R_acesso"
@@ -63,6 +63,8 @@
         android:layout_marginTop="280dp"
         android:isIndicator="true"
         android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         android:stepSize="0.3" />
 
     <!--
@@ -77,6 +79,30 @@
         android:hint="@string/acesso"
         android:textSize="16sp" />
   -->>
+
+    <TextView
+        android:id="@+id/quali_fruta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="100dp"
+        android:text="@string/qualidade_da_fruta"
+        android:textSize="18sp"
+        android:textColor="bla"
+        />
+    <RatingBar
+        android:id="@+id/R_quali_fruta"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="330dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="0.3" />
+    <!--
     <Spinner
         android:id="@+id/quali_fruta"
         android:layout_width="220dp"
@@ -86,7 +112,10 @@
         android:entries="@array/labels_quali"
         android:hint="@string/qualidade_da_fruta"
         android:textSize="16sp" />
+  -->>
 
+
+<!--
     <Spinner
         android:id="@+id/quant_fruta"
         android:layout_width="220dp"
@@ -96,7 +125,7 @@
         android:entries="@array/labels_quant"
         android:hint="@string/quantidade_de_frutas"
         android:textSize="16sp" />
-
+  -->>
     <EditText
         android:id="@+id/extra"
         android:inputType="textAutoComplete"
