@@ -28,20 +28,44 @@
         android:layout_height="120dp"
         android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/fa_a_parte_da_comunidade_nos_ajude_a_ter_mais_arvores_cadastradas_para_que_todos_possam_aproveitar_essas_marivilhas_da_natureza"
+        android:text="@string/Desc"
         android:textColor="#000000"
         android:textSize="24sp">
     </TextView>
 
+    <!-- No Futuro mudar pra um List View com Busca-->>
     <Spinner
         android:id="@+id/tipo"
-        android:layout_width="220dp"
-        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="235dp"
-        android:entries="@array/labels_tipos"
-        android:prompt="@string/tipo_de_arvore"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:entries= "@array/labels_tipos"
+        android:prompt= "@string/tipo_de_arvore"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/acesso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="100dp"
+        android:text="Acesso:"
+        android:textSize="18sp"
+
+        />
+    <RatingBar
+        android:id="@+id/R_acesso"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="280dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.3" />
+
+    <!--
 
     <Spinner
         android:id="@+id/acesso"
@@ -52,7 +76,7 @@
         android:entries="@array/labels_acesso"
         android:hint="@string/acesso"
         android:textSize="16sp" />
-
+  -->>
     <Spinner
         android:id="@+id/quali_fruta"
         android:layout_width="220dp"
