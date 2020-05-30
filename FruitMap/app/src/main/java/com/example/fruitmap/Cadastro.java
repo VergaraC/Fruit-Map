@@ -9,7 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +32,14 @@ public class Cadastro extends AppCompatActivity {
 
         Button cadastrar = findViewById(R.id.localizacao);
 
+        final TextView latitude = findViewById(R.id.latitude);
+        final TextView longitude = findViewById(R.id.longitude);
+
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.labels_acesso, android.R.layout.simple_spinner_item);
         acesso.setAdapter(adapter);
+
+        latitude.setText(getIntent().getStringExtra("latitude"));
+        longitude.setText(getIntent().getStringExtra("longitude"));
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override

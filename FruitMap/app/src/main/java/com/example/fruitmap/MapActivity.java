@@ -25,10 +25,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
+
+    double lLat;
+    double lLong;
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -46,6 +50,30 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
             mMap.setMyLocationEnabled(true);
         }
+
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+
+                MarkerOptions markerOptions = new MarkerOptions();
+
+                markerOptions.position(latLng);
+
+                markerOptions.title("Fruit Location");
+
+                mMap.clear();
+
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+
+                mMap.addMarker(markerOptions);
+
+                lLat = latLng.latitude;
+                lLong = latLng.longitude;
+
+                System.out.println(lLat);
+                System.out.println(lLong);
+            }
+        });
     }
 
     private static final String TAG = "MapActivity";
@@ -72,7 +100,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         btnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String valueLatitude = String.valueOf(lLat);
+                String valueLongitude = String.valueOf(lLong);
+
                 Intent intent = new Intent(MapActivity.this, Cadastro.class);
+
+                intent.putExtra("NAME", valueLatitude);
+                intent.putExtra("DESCRIPTION", valueLongitude);
+
                 startActivity(intent);
             }
         });

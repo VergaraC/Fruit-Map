@@ -23,6 +23,24 @@
     </TextView>
 
     <TextView
+        android:id="@+id/latitude"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="650dp"
+        android:text="laititude"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/longitude"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="650dp"
+        android:text="longitude"
+        android:textStyle="bold|italic"/>
+
+    <TextView
         android:id="@+id/descricao"
         android:layout_width="400dp"
         android:layout_height="120dp"
