@@ -2,6 +2,7 @@ package com.example.fruitmap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -38,6 +40,9 @@ public class Cadastro extends AppCompatActivity {
                 String quantCadastro = quant.getSelectedItem().toString();
                 String tipoCadastro = tipo.getSelectedItem().toString();
                 Toast.makeText(getApplicationContext(), "O item selecionado foi "+ acessoCadastro + ", " + qualiCadastro + ", " + quantCadastro + ", " + tipoCadastro, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(Cadastro.this, MapActivity.class);
+                startActivity(intent);
             }
         });
 
