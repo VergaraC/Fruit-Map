@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TreePage"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:contentDescription="@string/foto_da_arvore"
+        android:src="@drawable/Laranjeira"/>
+
+    <!-- Tipo de Arvore-->
+    <TextView
+        android:id="@+id/tipo_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:layout_marginStart="50dp"
+        android:textStyle="bold|italic"
+        android:textSize="22sp" />
+
+    <!-- Endereco 1 -->
+    <TextView
+        android:id="@+id/address1_t"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp"
+        android:layout_marginStart="50dp"
+        android:textSize="18sp"
+        />
+    <!-- Endereco 2 -->
+    <TextView
+        android:id="@+id/address2_t"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="405dp"
+        android:layout_marginStart="50dp"
+        android:textSize="18sp"
+        />
+
+    <!-- distancia -->
+    <TextView
+        android:id="@+id/d_t"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp"
+        android:layout_marginStart="190dp"
+        android:textSize="18sp"
+        />
+
+    <!-- acesso -->
+    <TextView
+        android:id="@+id/acesso_t"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/acesso"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        />
+    <RatingBar
+        android:id="@+id/R_acessoW"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="440dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="0.3" />
+
+    <!-- quali -->
+    <TextView
+        android:id="@+id/quali_t"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="470dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/qualidade_da_fruta"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        />
+    <RatingBar
+        android:id="@+id/R_qualiW"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="490dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="0.3" />
+    <!-- quant -->
+    <TextView
+        android:id="@+id/quant_t"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="520dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/quantidade_de_frutas"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        />
+    <RatingBar
+        android:id="@+id/R_quantW"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="540dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="0.3" />
+
+    <!-- ir para pagina de comentarios-->
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="620dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        android:background="#4875B4" />
+
+</RelativeLayout>
