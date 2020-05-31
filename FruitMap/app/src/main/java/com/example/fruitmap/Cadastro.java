@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -16,36 +17,40 @@ import java.util.List;
 
 public class Cadastro extends AppCompatActivity {
 
+    Float rating_quali;
+    Float rating_quant;
+    Float rating_acesso;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro);
 
         final Spinner tipo = findViewById(R.id.tipo);
-        final Spinner quali = findViewById(R.id.quali_fruta);
-        final Spinner acesso = findViewById(R.id.acesso);
-        final Spinner quant = findViewById(R.id.quant_fruta);
 
-        Button cadastrar = findViewById(R.id.localizacao);
+        final RatingBar quali = findViewById(R.id.R_quali_fruta);
+        final RatingBar acesso = findViewById(R.id.R_acesso);
+        final RatingBar quant = findViewById(R.id.R_quant_fruta);
 
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.labels_acesso, android.R.layout.simple_spinner_item);
-        acesso.setAdapter(adapter);
+        final Button cadastrar = findViewById(R.id.localizacao);
+
+        //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.labels_acesso, android.R.layout.simple_spinner_item);
+        //acesso.setAdapter(adapter);
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String acessoCadastro = acesso.getSelectedItem().toString();
-                String qualiCadastro = quali.getSelectedItem().toString();
-                String quantCadastro = quant.getSelectedItem().toString();
+
                 String tipoCadastro = tipo.getSelectedItem().toString();
-                Toast.makeText(getApplicationContext(), "O item selecionado foi "+ acessoCadastro + ", " + qualiCadastro + ", " + quantCadastro + ", " + tipoCadastro, Toast.LENGTH_SHORT).show();
+
+                rating_quali = quali.getRating();
+                rating_quant = quant.getRating();
+                rating_acesso = acesso.getRating();
+
+                Toast.makeText(getApplicationContext(), "O item selecionado foi " + tipoCadastro + ", " + rating_acesso + ", " + rating_quali + ", " + rating_quant, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Cadastro.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-
-
     }
-
-
 }
