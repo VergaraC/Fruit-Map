@@ -12,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -32,14 +34,21 @@ public class Cadastro extends AppCompatActivity {
 
         Button cadastrar = findViewById(R.id.localizacao);
 
-        final TextView latitude = findViewById(R.id.latitude);
-        final TextView longitude = findViewById(R.id.longitude);
+        final TextView textLatitude = findViewById(R.id.latitude);
+        final TextView textLongitude = findViewById(R.id.longitude);
+
+        Bundle bundle = getIntent().getExtras();
+        double lLat = bundle.getDouble("latitude");
+        double lLong = bundle.getDouble("longitude");
+
+        System.out.println("Cadastro latitude: " + lLat);
+        System.out.println("Cadastro longitude: " + lLong);
+
+        textLatitude.setText(String.valueOf(lLat));
+        textLongitude.setText(String.valueOf(lLong));
 
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.labels_acesso, android.R.layout.simple_spinner_item);
         acesso.setAdapter(adapter);
-
-        latitude.setText(getIntent().getStringExtra("latitude"));
-        longitude.setText(getIntent().getStringExtra("longitude"));
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override

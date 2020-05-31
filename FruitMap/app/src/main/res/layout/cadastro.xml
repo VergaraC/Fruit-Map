@@ -27,7 +27,7 @@
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="530dp"
         android:text="laititude"
         android:textStyle="bold|italic"/>
 
@@ -36,7 +36,7 @@
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_marginLeft="200dp"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="530dp"
         android:text="longitude"
         android:textStyle="bold|italic"/>
 

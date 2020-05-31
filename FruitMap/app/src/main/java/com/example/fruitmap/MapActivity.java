@@ -31,8 +31,30 @@ import com.google.android.gms.tasks.Task;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
 
-    double lLat;
-    double lLong;
+    double lLat = 0;
+    double lLong = 0;
+
+    private static final String TAG = "MapActivity";
+
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+
+    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+
+    private static final float DEFAULT_ZOOM = 15f;
+
+    private Boolean mLocationPermissionGranted = false;
+    private GoogleMap mMap;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map);
+
+        getLocationPermission();
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -40,8 +62,39 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
 
+        //Metodo getDeviceLocation
+
         if(mLocationPermissionGranted){
-            getDeviceLocation();
+            Log.d(TAG, "getDeviceLocation: getting the devices current location");
+
+            mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+            try{
+                if (mLocationPermissionGranted){
+                    Task location = mFusedLocationProviderClient.getLastLocation();
+                    location.addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful()){
+                                Log.d(TAG, "onComplete: found location!");
+                                Location currentLocation = (Location) task.getResult();
+
+                                moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                        DEFAULT_ZOOM);
+
+                                lLat = currentLocation.getLatitude();
+                                lLong = currentLocation.getLongitude();
+
+                            } else {
+                                Log.d(TAG, "onComplete: current location is null");
+                                Toast.makeText(MapActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }catch (SecurityException e){
+                Log.e(TAG, "getDeviceLocation: SecurityException" + e.getMessage());
+            }
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
@@ -51,7 +104,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
 
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+        /*mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
 
@@ -73,75 +126,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 System.out.println(lLat);
                 System.out.println(lLong);
             }
-        });
-    }
-
-    private static final String TAG = "MapActivity";
-
-    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-
-    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
-
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-
-    private static final float DEFAULT_ZOOM = 15f;
-
-    private Boolean mLocationPermissionGranted = false;
-    private GoogleMap mMap;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        });*/
 
         ImageButton btnCadastro = findViewById(R.id.buttonCadastro);
 
         btnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String valueLatitude = String.valueOf(lLat);
-                String valueLongitude = String.valueOf(lLong);
 
                 Intent intent = new Intent(MapActivity.this, Cadastro.class);
 
-                intent.putExtra("NAME", valueLatitude);
-                intent.putExtra("DESCRIPTION", valueLongitude);
+                intent.putExtra("latitude", lLat);
+                intent.putExtra("longitude", lLong);
+
+                System.out.println("MapActivity latitude: " + lLat);
+                System.out.println("MapActivity longitude: " + lLong);
 
                 startActivity(intent);
             }
         });
-
-        getLocationPermission();
-    }
-
-    private void getDeviceLocation(){
-        Log.d(TAG, "getDeviceLocation: getting the devices current location");
-
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-        try{
-            if (mLocationPermissionGranted){
-                Task location = mFusedLocationProviderClient.getLastLocation();
-                location.addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()){
-                            Log.d(TAG, "onComplete: found location!");
-                            Location currentLocation = (Location) task.getResult();
-
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                    DEFAULT_ZOOM);
-                        } else {
-                            Log.d(TAG, "onComplete: current location is null");
-                            Toast.makeText(MapActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        }catch (SecurityException e){
-            Log.e(TAG, "getDeviceLocation: SecurityException" + e.getMessage());
-        }
     }
 
     private void moveCamera(LatLng latLng, float zoom){
