@@ -28,20 +28,46 @@
         android:layout_height="120dp"
         android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:text="@string/fa_a_parte_da_comunidade_nos_ajude_a_ter_mais_arvores_cadastradas_para_que_todos_possam_aproveitar_essas_marivilhas_da_natureza"
+        android:text="@string/Desc"
         android:textColor="#000000"
         android:textSize="24sp">
     </TextView>
 
+    <!-- No Futuro mudar pra um List View com Busca-->
     <Spinner
         android:id="@+id/tipo"
-        android:layout_width="220dp"
-        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="235dp"
-        android:entries="@array/labels_tipos"
-        android:prompt="@string/tipo_de_arvore"
-        android:textSize="16sp" />
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:entries= "@array/labels_tipos"
+        android:prompt= "@string/tipo_de_arvore"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/acesso"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="80dp"
+        android:text="@string/acesso"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        />
+    <RatingBar
+        android:id="@+id/R_acesso"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="300dp"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="0.3" />
+
+    <!--
 
     <Spinner
         android:id="@+id/acesso"
@@ -52,7 +78,31 @@
         android:entries="@array/labels_acesso"
         android:hint="@string/acesso"
         android:textSize="16sp" />
+  -->
 
+    <TextView
+        android:id="@+id/quali_fruta"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_marginStart="80dp"
+        android:text="@string/qualidade_da_fruta"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        />
+    <RatingBar
+        android:id="@+id/R_quali_fruta"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="350dp"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="0.3" />
+    <!--
     <Spinner
         android:id="@+id/quali_fruta"
         android:layout_width="220dp"
@@ -62,7 +112,31 @@
         android:entries="@array/labels_quali"
         android:hint="@string/qualidade_da_fruta"
         android:textSize="16sp" />
+  -->
 
+    <TextView
+        android:id="@+id/quant_fruta"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380dp"
+        android:layout_marginStart="80dp"
+        android:text="@string/quantidade_de_frutas"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        />
+    <RatingBar
+        android:id="@+id/R_quant_fruta"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="400dp"
+        android:isIndicator="false"
+        android:numStars="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:stepSize="0.3" />
+<!--
     <Spinner
         android:id="@+id/quant_fruta"
         android:layout_width="220dp"
@@ -72,17 +146,18 @@
         android:entries="@array/labels_quant"
         android:hint="@string/quantidade_de_frutas"
         android:textSize="16sp" />
-
+  -->
     <EditText
         android:id="@+id/extra"
         android:inputType="textAutoComplete"
         android:layout_width="400dp"
         android:layout_height="100dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="440dp"
         android:layout_centerHorizontal="true"
         android:hint="@string/comentario_extra"
         android:textAlignment="center"
-        android:textSize="26sp" />
+        android:textSize="26sp"
+        android:autofillHints="As melhores frutas estao nos galhos mais a eaquerda" />
 
     <Button
         android:id="@+id/localizacao"
