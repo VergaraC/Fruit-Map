@@ -49,12 +49,15 @@ public class Cadastro extends AppCompatActivity {
                 rating_acesso = acesso.getRating();
                 String comentario = extra.getText().toString();
 
-                Tree arvore = new Tree(comentario, tipoCadastro,rating_acesso,rating_quant,rating_quali);
+                Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali);
 
+                // if (DEU CERTO){
                 Intent intent = new Intent(Cadastro.this, MainActivity.class);
                 startActivity(intent);
-                //Toast.makeText(getApplicationContext(), "O item selecionado foi " + tipoCadastro + ", " +comentario + ", " + rating_acesso + ", " + rating_quali + ", " + rating_quant, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Cadastro concluido, obrigado! ",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Cadastro concluido, obrigado! ", Toast.LENGTH_SHORT).show();
+                /* }else{
+                Toast.makeText(getApplicationContext(), "Ocorreu alguma problema de criar o cadastro! Certifique-se que esta conectado a Internet! ", Toast.LENGTH_SHORT).show();
+            } */
 
             }
         });
