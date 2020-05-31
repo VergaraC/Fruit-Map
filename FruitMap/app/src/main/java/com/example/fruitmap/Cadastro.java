@@ -46,7 +46,7 @@ public class Cadastro extends AppCompatActivity {
                 rating_quali = quali.getRating();
                 rating_quant = quant.getRating();
                 rating_acesso = acesso.getRating();
-
+                
                 Toast.makeText(getApplicationContext(), "O item selecionado foi " + tipoCadastro + ", " + rating_acesso + ", " + rating_quali + ", " + rating_quant, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Cadastro.this, MainActivity.class);
                 startActivity(intent);
