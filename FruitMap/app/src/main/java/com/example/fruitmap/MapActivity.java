@@ -62,7 +62,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
 
-        //Metodo getDeviceLocation
+        //Metodo getDeviceLocation() transferido
 
         if(mLocationPermissionGranted){
             Log.d(TAG, "getDeviceLocation: getting the devices current location");
@@ -103,6 +103,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
             mMap.setMyLocationEnabled(true);
         }
+
+        //Adicionar marker com OnMapLongClickListener
 
         /*mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override

@@ -63,20 +63,5 @@ public class Cadastro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //tipo.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //acesso.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //quant.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        //quali.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
     }
-
-    /*@Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-    }*/
-
 }
