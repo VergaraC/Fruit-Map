@@ -68,7 +68,7 @@ public class Cadastro extends AppCompatActivity {
                 Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali);
 
                 // if (DEU CERTO){
-                Intent intent = new Intent(Cadastro.this, MainActivity.class);
+                Intent intent = new Intent(Cadastro.this, MapActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Cadastro concluido, obrigado! ", Toast.LENGTH_SHORT).show();
                 /* }else{
