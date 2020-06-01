@@ -10,6 +10,7 @@ public class Tree {
     private double longi;
 
     public Tree (String comentario, String tipo,  double acesso, double quant, double quali, double lat, double longi) {
+
         this.comentario = comentario;
         this.tipo =  tipo;
         this.acesso = acesso;
