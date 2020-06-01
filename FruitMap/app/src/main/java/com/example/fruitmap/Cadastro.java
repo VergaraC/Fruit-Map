@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -24,14 +26,20 @@ import java.util.Map;
 
 public class Cadastro extends AppCompatActivity {
 
-    Float rating_quali;
-    Float rating_quant;
-    Float rating_acesso;
+    double rating_quali;
+    double rating_quant;
+    double rating_acesso;
+
+    FirebaseDatabase db;
+    DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro);
+
+        db = FirebaseDatabase.getInstance();
+        ref = db.getReference("trees");
 
         final Spinner tipo = findViewById(R.id.tipo);
 
@@ -66,6 +74,9 @@ public class Cadastro extends AppCompatActivity {
                 String comentario = extra.getText().toString();
 
                 Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
+
+                String id = ref.push().getKey();
+                ref.child(id).setValue(arvore);
 
                 // if (DEU CERTO){
                 Intent intent = new Intent(Cadastro.this, MapActivity.class);
