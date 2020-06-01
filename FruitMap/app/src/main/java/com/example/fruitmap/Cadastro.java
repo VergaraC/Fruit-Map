@@ -45,7 +45,7 @@ public class Cadastro extends AppCompatActivity {
         final TextView textLongitude = findViewById(R.id.longitude);
 
         Bundle bundle = getIntent().getExtras();
-        double lLat = bundle.getDouble("latitude");
+        final double lLat = bundle.getDouble("latitude");
         final double lLong = bundle.getDouble("longitude");
 
         System.out.println("Cadastro latitude: " + lLat);
