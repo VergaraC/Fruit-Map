@@ -46,7 +46,7 @@ public class Cadastro extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         double lLat = bundle.getDouble("latitude");
-        double lLong = bundle.getDouble("longitude");
+        final double lLong = bundle.getDouble("longitude");
 
         System.out.println("Cadastro latitude: " + lLat);
         System.out.println("Cadastro longitude: " + lLong);
@@ -65,7 +65,7 @@ public class Cadastro extends AppCompatActivity {
                 rating_acesso = acesso.getRating();
                 String comentario = extra.getText().toString();
 
-                Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali);
+                Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
 
                 // if (DEU CERTO){
                 Intent intent = new Intent(Cadastro.this, MapActivity.class);
