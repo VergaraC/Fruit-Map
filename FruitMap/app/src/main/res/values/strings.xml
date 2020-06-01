@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">FruitMap</string>
-    <string name="google_maps_API_key">AIzaSyA8b5xzIIg4OA9V5aPPOVPHwfeR31gdYx4</string>
+    <string name="google_maps_API_key">AIzaSyDysEImPY2Xwc7yNSm8EhOZAI9VLWqpe7c</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="qualidade_da_fruta">Qualidade da Fruta:</string>
     <string name="acesso">Acesso:</string>

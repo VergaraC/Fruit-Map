@@ -11,10 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -35,8 +41,18 @@ public class Cadastro extends AppCompatActivity {
         final EditText extra = findViewById(R.id.extra);
         final Button cadastrar = findViewById(R.id.localizacao);
 
-        //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.labels_acesso, android.R.layout.simple_spinner_item);
-        //acesso.setAdapter(adapter);
+        final TextView textLatitude = findViewById(R.id.latitude);
+        final TextView textLongitude = findViewById(R.id.longitude);
+
+        Bundle bundle = getIntent().getExtras();
+        double lLat = bundle.getDouble("latitude");
+        double lLong = bundle.getDouble("longitude");
+
+        System.out.println("Cadastro latitude: " + lLat);
+        System.out.println("Cadastro longitude: " + lLong);
+
+        textLatitude.setText(String.valueOf(lLat));
+        textLongitude.setText(String.valueOf(lLong));
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +74,6 @@ public class Cadastro extends AppCompatActivity {
                 /* }else{
                 Toast.makeText(getApplicationContext(), "Ocorreu alguma problema de criar o cadastro! Certifique-se que esta conectado a Internet! ", Toast.LENGTH_SHORT).show();
             } */
-
             }
         });
     }

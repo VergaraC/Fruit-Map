@@ -1,9 +1,14 @@
 package com.example.fruitmap;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,18 +17,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onMapReady: map is ready");
-        mMap = googleMap;
-    }
+    double lLat = 0;
+    double lLong = 0;
 
     private static final String TAG = "MapActivity";
 
@@ -33,8 +42,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
+    private static final float DEFAULT_ZOOM = 15f;
+
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,8 +56,102 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         getLocationPermission();
     }
 
-    private void getDeviceLocation(){
-        Log.d(TAG, "getDeviceLocation: getting the devices current location");
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onMapReady: map is ready");
+        mMap = googleMap;
+
+        //Metodo getDeviceLocation() transferido
+
+        if(mLocationPermissionGranted){
+            Log.d(TAG, "getDeviceLocation: getting the devices current location");
+
+            mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+            try{
+                if (mLocationPermissionGranted){
+                    Task location = mFusedLocationProviderClient.getLastLocation();
+                    location.addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful()){
+                                Log.d(TAG, "onComplete: found location!");
+                                Location currentLocation = (Location) task.getResult();
+
+                                moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                        DEFAULT_ZOOM);
+
+                                lLat = currentLocation.getLatitude();
+                                lLong = currentLocation.getLongitude();
+
+                            } else {
+                                Log.d(TAG, "onComplete: current location is null");
+                                Toast.makeText(MapActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }catch (SecurityException e){
+                Log.e(TAG, "getDeviceLocation: SecurityException" + e.getMessage());
+            }
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                return;
+            }
+            mMap.setMyLocationEnabled(true);
+        }
+
+        //Adicionar marker com OnMapLongClickListener
+
+        /*mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+
+                MarkerOptions markerOptions = new MarkerOptions();
+
+                markerOptions.position(latLng);
+
+                markerOptions.title("Fruit Location");
+
+                mMap.clear();
+
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+
+                mMap.addMarker(markerOptions);
+
+                lLat = latLng.latitude;
+                lLong = latLng.longitude;
+
+                System.out.println(lLat);
+                System.out.println(lLong);
+            }
+        });*/
+
+        ImageButton btnCadastro = findViewById(R.id.buttonCadastro);
+
+        btnCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MapActivity.this, Cadastro.class);
+
+                intent.putExtra("latitude", lLat);
+                intent.putExtra("longitude", lLong);
+
+                System.out.println("MapActivity latitude: " + lLat);
+                System.out.println("MapActivity longitude: " + lLong);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void moveCamera(LatLng latLng, float zoom){
+        Log.d(TAG, "moveCamera: moving the camera to: lat: " +latLng.latitude + ", lng: "+ latLng.longitude);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
     private void initMap(){

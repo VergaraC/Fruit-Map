@@ -18,20 +18,21 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA8b5xzIIg4OA9V5aPPOVPHwfeR31gdYx4" />
+            android:value="AIzaSyDysEImPY2Xwc7yNSm8EhOZAI9VLWqpe7c"/>
+      
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapActivity" />
-        <activity android:name=".Cadastro" />
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Cadastro"></activity>
     </application>
 
 </manifest>
