@@ -6,8 +6,8 @@ public class Tree {
     Float acesso;
     Float quant;
     Float quali;
-    Double lLat;
-    Double lLong;
+    double lLat;
+    double lLong;
     public Tree (String comentario,String tipo,  Float acesso,Float quant,Float quali, Double lLat, Double lLong){
         this.comentario = comentario;
         this.tipo =  tipo;
