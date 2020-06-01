@@ -2,11 +2,12 @@
     <string name="app_name">FruitMap</string>
     <string name="google_maps_API_key">AIzaSyDysEImPY2Xwc7yNSm8EhOZAI9VLWqpe7c</string>
     <string name="cadastrar">Cadastrar</string>
-    <string name="qualidade_da_fruta">Qualidade da Fruta</string>
-    <string name="acesso">Acesso</string>
+    <string name="qualidade_da_fruta">Qualidade da Fruta:</string>
+    <string name="acesso">Acesso:</string>
     <string name="tipo_de_arvore">Tipo de arvore</string>
     <string name="cadastre_uma_arvore">Cadastre uma Arvore</string>
-    <string name="quantidade_de_frutas">Quantidade de Frutas</string>
-    <string name="fa_a_parte_da_comunidade_nos_ajude_a_ter_mais_arvores_cadastradas_para_que_todos_possam_aproveitar_essas_marivilhas_da_natureza">Faça parte da comunidade, nos ajude a ter mais arvores cadastradas, para que todos possam aproveitar essas marivilhas da natureza!!!</string>
+    <string name="quantidade_de_frutas">Quantidade de Frutas:</string>
+    <string name="Desc">Faça parte da comunidade, nos ajude a ter mais arvores cadastradas, para que todos possam aproveitar essas marivilhas da natureza!!!</string>
     <string name="comentario_extra">Comentario extra</string>
+    <string name="foto_da_arvore">Foto da Arvore</string>
 </resources>
