@@ -106,7 +106,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //Adicionar marker com OnMapLongClickListener
 
-        /*mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
 
@@ -121,14 +121,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
 
                 mMap.addMarker(markerOptions);
-
-                lLat = latLng.latitude;
-                lLong = latLng.longitude;
-
-                System.out.println(lLat);
-                System.out.println(lLong);
             }
-        });*/
+        });
 
         ImageButton btnCadastro = findViewById(R.id.buttonCadastro);
 
