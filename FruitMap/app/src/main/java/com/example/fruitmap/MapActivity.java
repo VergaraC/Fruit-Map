@@ -25,9 +25,16 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -48,16 +55,27 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
+    FirebaseDatabase database;
+    DatabaseReference trees;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
         getLocationPermission();
+
+        /* Essas variaveis sao para conexao com o banco de dados */
+
+        database = FirebaseDatabase.getInstance();
+        trees = database.getReference("trees");
+
+        /* ========================================================== */
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
@@ -104,25 +122,43 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
 
-        //Adicionar marker com OnMapLongClickListener
+        //Adicionar markers
 
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+        trees.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onMapLongClick(LatLng latLng) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot tree : dataSnapshot.getChildren()){
+                    Tree arvore = tree.getValue(Tree.class);
 
-                MarkerOptions markerOptions = new MarkerOptions();
+                    LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
 
-                markerOptions.position(latLng);
+                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                }
+            }
 
-                markerOptions.title("Fruit Location");
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                mMap.clear();
-
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-
-                mMap.addMarker(markerOptions);
             }
         });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String id = (String) marker.getTag();
+
+                Intent intent = new Intent(MapActivity.this, TreePage.class);
+
+                intent.putExtra("id", id);
+
+                System.out.println("id:" + id);
+
+                startActivity(intent);
+
+                return false;
+            }
+        });
+
 
         ImageButton btnCadastro = findViewById(R.id.buttonCadastro);
 

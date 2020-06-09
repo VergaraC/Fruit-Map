@@ -18,12 +18,13 @@
     <!-- Tipo de Arvore-->
     <TextView
         android:id="@+id/tipo_t"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginStart="200dp"
         android:textStyle="bold|italic"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:text="Tipo"/>
 
     <!-- Endereco 1 -->
     <TextView

@@ -9,10 +9,14 @@ public class Tree {
     private double lat;
     private double longi;
 
-    public Tree (String comentario, String tipo,  double acesso, double quant, double quali, double lat, double longi) {
+    public Tree(){
+
+    }
+
+    public Tree(String comentario, String tipo, double acesso, double quant, double quali, double lat, double longi) {
 
         this.comentario = comentario;
-        this.tipo =  tipo;
+        this.tipo = tipo;
         this.acesso = acesso;
         this.quant = quant;
         this.quali = quali;
