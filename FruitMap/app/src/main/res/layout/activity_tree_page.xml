@@ -11,38 +11,43 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
         android:contentDescription="@string/foto_da_arvore"
-        android:src="@drawable/laranjeira"/>
+        android:src="@drawable/tree"/>
 
     <!-- Tipo de Arvore-->
     <TextView
         android:id="@+id/tipo_t"
-        android:layout_width="100dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="580dp"
-        android:layout_marginStart="200dp"
-        android:textStyle="bold|italic"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
         android:textSize="22sp"
-        android:text="Tipo"/>
+        android:textAlignment="center"
+        android:text="Tipo"
+        android:textColor="#000000"/>
 
     <!-- Endereco 1 -->
     <TextView
         android:id="@+id/address1_t"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="390dp"
+        android:layout_width="350dp"
+        android:layout_height="34dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="270dp"
         android:textSize="18sp"
-        />
+        android:text="Endereço"
+        android:textColor="#000000"/>
     <!-- Endereco 2 -->
     <TextView
         android:id="@+id/address2_t"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="405dp"
+        android:layout_width="190dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="310dp"
         android:layout_marginStart="50dp"
-        android:textSize="18sp"
+        android:textSize="14sp"
+        android:text="Address"
         />
 
     <!-- distancia -->
@@ -50,9 +55,12 @@
         android:id="@+id/d_t"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="390dp"
-        android:layout_marginStart="190dp"
-        android:textSize="18sp"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="250dp"
+        android:textSize="16sp"
+        android:text="300 m"
+        android:textAlignment="center"
+        android:textColor="#000000"
         />
 
     <!-- acesso -->
@@ -60,7 +68,7 @@
         android:id="@+id/acesso_t"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="425dp"
         android:layout_marginStart="50dp"
         android:text="@string/acesso"
         android:textColor="#000000"
@@ -71,12 +79,12 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="430dp"
         android:isIndicator="true"
         android:numStars="5"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
+        android:scaleX="2"
+        android:scaleY="2"
         android:stepSize="0.3" />
 
     <!-- quali -->
@@ -84,7 +92,7 @@
         android:id="@+id/quali_t"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="460dp"
         android:layout_marginStart="50dp"
         android:text="@string/qualidade_da_fruta"
         android:textColor="#000000"
@@ -95,19 +103,19 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="490dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="480dp"
         android:isIndicator="true"
         android:numStars="5"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
+        android:scaleX="2"
+        android:scaleY="2"
         android:stepSize="0.3" />
     <!-- quant -->
     <TextView
         android:id="@+id/quant_t"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="520dp"
+        android:layout_marginTop="510dp"
         android:layout_marginStart="50dp"
         android:text="@string/quantidade_de_frutas"
         android:textColor="#000000"
@@ -118,22 +126,23 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="540dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="530dp"
         android:isIndicator="true"
         android:numStars="5"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
+        android:scaleX="2"
+        android:scaleY="2"
         android:stepSize="0.3" />
 
     <!-- ir para pagina de comentarios-->
     <Button
-        android:layout_width="200dp"
+        android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="620dp"
+        android:layout_marginTop="580dp"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:background="#4875B4" />
+        android:textStyle="bold"
+        android:background="#4875B4"
+        android:text="Comentar"/>
 
 </RelativeLayout>

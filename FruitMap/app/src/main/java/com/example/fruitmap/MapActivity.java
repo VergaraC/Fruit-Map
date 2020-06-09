@@ -181,7 +181,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void moveCamera(LatLng latLng, float zoom){
         Log.d(TAG, "moveCamera: moving the camera to: lat: " +latLng.latitude + ", lng: "+ latLng.longitude);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
     private void initMap(){
