@@ -70,7 +70,11 @@ public class TreePage extends AppCompatActivity {
                             addresses = geocoder.getFromLocation(arvore.getLat(), arvore.getLongi(), 1);
                             Address address = addresses.get(0);
                             String result = address.getAddressLine(0);
-                            address1.setText(result);
+                            int index = result.indexOf("-");
+                            String text = result.substring(0, index);
+                            String text2 = result.substring(index+2);
+                            address1.setText(text);
+                            address2.setText(text2);
                         } catch (IOException e){
                             e.printStackTrace();
                             Toast.makeText(TreePage.this,"Endereço nao encontrado", Toast.LENGTH_SHORT).show();

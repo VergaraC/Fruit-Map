@@ -49,18 +49,12 @@ public class Cadastro extends AppCompatActivity {
         final EditText extra = findViewById(R.id.extra);
         final Button cadastrar = findViewById(R.id.localizacao);
 
-        final TextView textLatitude = findViewById(R.id.latitude);
-        final TextView textLongitude = findViewById(R.id.longitude);
-
         Bundle bundle = getIntent().getExtras();
         final double lLat = bundle.getDouble("latitude");
         final double lLong = bundle.getDouble("longitude");
 
         System.out.println("Cadastro latitude: " + lLat);
         System.out.println("Cadastro longitude: " + lLong);
-
-        textLatitude.setText(String.valueOf(lLat));
-        textLongitude.setText(String.valueOf(lLong));
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override

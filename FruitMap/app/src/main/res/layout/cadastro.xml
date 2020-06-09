@@ -17,45 +17,16 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:text="@string/cadastre_uma_arvore"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="30sp">
-    </TextView>
-
-    <TextView
-        android:id="@+id/latitude"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="530dp"
-        android:text="laititude"
-        android:textStyle="bold|italic"/>
-
-    <TextView
-        android:id="@+id/longitude"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="530dp"
-        android:text="longitude"
-        android:textStyle="bold|italic"/>
-
-    <TextView
-        android:id="@+id/descricao"
-        android:layout_width="400dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/Desc"
-        android:textColor="#000000"
-        android:textSize="24sp">
     </TextView>
 
     <!-- No Futuro mudar pra um List View com Busca-->
     <Spinner
         android:id="@+id/tipo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="235dp"
+        android:layout_marginTop="120dp"
         android:layout_width="220dp"
         android:layout_height="40dp"
         android:entries= "@array/labels_tipos"
@@ -66,10 +37,11 @@
         android:id="@+id/acesso"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="150dp"
         android:text="@string/acesso"
         android:textSize="18sp"
+        android:textAlignment="center"
         android:textColor="#000000"
         />
     <RatingBar
@@ -77,35 +49,23 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="240dp"
         android:isIndicator="false"
         android:numStars="5"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
+        android:scaleX="2"
+        android:scaleY="2"
         android:stepSize="0.3" />
-
-    <!--
-
-    <Spinner
-        android:id="@+id/acesso"
-        android:layout_width="220dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="280dp"
-        android:layout_centerHorizontal="true"
-        android:entries="@array/labels_acesso"
-        android:hint="@string/acesso"
-        android:textSize="16sp" />
-  -->
 
     <TextView
         android:id="@+id/quali_fruta"
-        android:layout_width="100dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="330dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="110dp"
         android:text="@string/qualidade_da_fruta"
         android:textSize="18sp"
+        android:textAlignment="center"
         android:textColor="#000000"
         />
     <RatingBar
@@ -113,12 +73,12 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="330dp"
         android:isIndicator="false"
         android:numStars="5"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
+        android:scaleX="2"
+        android:scaleY="2"
         android:stepSize="0.3" />
     <!--
     <Spinner
@@ -134,25 +94,26 @@
 
     <TextView
         android:id="@+id/quant_fruta"
-        android:layout_width="100dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="370dp"
+        android:layout_marginStart="110dp"
         android:text="@string/quantidade_de_frutas"
         android:textSize="18sp"
         android:textColor="#000000"
+        android:textAlignment="center"
         />
     <RatingBar
         android:id="@+id/R_quant_fruta"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="410dp"
         android:isIndicator="false"
         android:numStars="5"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
+        android:scaleX="2"
+        android:scaleY="2"
         android:stepSize="0.3" />
 <!--
     <Spinner
@@ -168,9 +129,9 @@
     <EditText
         android:id="@+id/extra"
         android:inputType="textAutoComplete"
-        android:layout_width="400dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="440dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="480dp"
         android:layout_centerHorizontal="true"
         android:hint="@string/comentario_extra"
         android:textAlignment="center"
@@ -179,13 +140,13 @@
 
     <Button
         android:id="@+id/localizacao"
-        android:layout_width="120dp"
+        android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="620dp"
         android:layout_centerHorizontal="true"
         android:text="@string/cadastrar"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:background="#4875B4" />
 
 
