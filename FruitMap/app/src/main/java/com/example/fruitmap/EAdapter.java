@@ -19,20 +19,21 @@ public class EAdapter extends RecyclerView.Adapter<EAdapter.ViewHolder> implemen
 
     private  ArrayList<Item> mExampleList;
     private  ArrayList<Item> copia_list;
-    private RecyclerView.OnItemTouchListener mListerner;
+    private onItemClickListener mListerner;
 
     public interface onItemClickListener{
         void onItemClick(int position);
     }
-    public void setOnItemClickListerner(RecyclerView.OnItemTouchListener listerner ){
-        mListerner = listerner;
+    public void setOnItemClickListerner(onItemClickListener listener ){
+        mListerner = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public ImageView mImageView;
         public TextView titulo;
 
-        public ViewHolder (View itemView, final RecyclerView.OnItemTouchListener listener){
+
+        public ViewHolder (View itemView, final onItemClickListener listener){
             super(itemView);
             mImageView = itemView.findViewById(R.id.img_item);
             titulo = itemView.findViewById(R.id.text_item);
@@ -43,7 +44,7 @@ public class EAdapter extends RecyclerView.Adapter<EAdapter.ViewHolder> implemen
                     if (listener != null){
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION){
-// -->>>>>>>>>>------------------------                           // listener.onItemClick( position);
+                            listener.onItemClick(position);
                         }
                     }
                 }

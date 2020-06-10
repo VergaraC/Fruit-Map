@@ -3,7 +3,7 @@ package com.example.fruitmap;
 public class Item {
     private int mImageResourece;
     private String titulo;
-    private String cliked;
+    private String clicked;
 
     public Item(int mImageResourece,String titulo ){
 
@@ -11,7 +11,7 @@ public class Item {
         this.titulo = titulo;
     }
     public void changeclicked (String text){
-        cliked = text;
+        clicked = text;
     }
     public String getTitulo() {
         return titulo;

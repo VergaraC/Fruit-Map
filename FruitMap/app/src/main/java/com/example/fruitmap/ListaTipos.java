@@ -40,12 +40,13 @@ public class ListaTipos extends AppCompatActivity {
     }
     public void changeItem(int position, String text){
         list_items.get(position).changeclicked(text);
+        mAdapter.notifyItemChanged(position);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.exemple_menu, menu);
+        inflater.inflate(R.menu.escrever, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
 
