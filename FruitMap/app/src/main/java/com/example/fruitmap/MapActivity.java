@@ -166,7 +166,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MapActivity.this, Cadastro.class);
+                Intent intent = new Intent(MapActivity.this, ListaTipos.class);
 
                 intent.putExtra("latitude", lLat);
                 intent.putExtra("longitude", lLong);

@@ -14,12 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TreePage"></activity>
+        <activity android:name=".ListaTipos"></activity>
+        <activity android:name=".TreePage" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDysEImPY2Xwc7yNSm8EhOZAI9VLWqpe7c"/>
-      
+            android:value="AIzaSyDysEImPY2Xwc7yNSm8EhOZAI9VLWqpe7c" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -31,8 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Cadastro"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Cadastro" />
     </application>
 
 </manifest>
