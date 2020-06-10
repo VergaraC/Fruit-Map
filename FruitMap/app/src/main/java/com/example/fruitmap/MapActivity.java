@@ -40,6 +40,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     double lLat = 0;
     double lLong = 0;
+    double endLat = 0;
+    double endLong = 0;
 
     private static final String TAG = "MapActivity";
 
@@ -147,10 +149,23 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public boolean onMarkerClick(Marker marker) {
                 String id = (String) marker.getTag();
 
+                double endLat = marker.getPosition().latitude;
+                double endLong = marker.getPosition().longitude;
+
+                int distancia = 0;
+
+                float distances[] = new float[10];
+                Location.distanceBetween(lLat, lLong, endLat, endLong, distances);
+
+                distancia = (int) (distances[0]);
+
                 Intent intent = new Intent(MapActivity.this, TreePage.class);
+
+                intent.putExtra("distance", distancia);
 
                 intent.putExtra("id", id);
 
+                System.out.println("distance no Map "+ distances[0]);
                 System.out.println("id:" + id);
 
                 startActivity(intent);

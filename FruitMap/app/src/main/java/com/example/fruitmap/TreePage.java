@@ -58,24 +58,32 @@ public class TreePage extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         final String treeId = bundle.getString("id");
+        final int distance = bundle.getInt("distance");
+        System.out.println("distancia na TreePage "+distance);
 
         trees.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot tree : dataSnapshot.getChildren()) {
+
                     if (tree.getKey().equals(treeId)) {
                         Tree arvore = tree.getValue(Tree.class);
                         tipo.setText(arvore.getTipo());
+
                         try {
                             addresses = geocoder.getFromLocation(arvore.getLat(), arvore.getLongi(), 1);
                             Address address = addresses.get(0);
                             String result = address.getAddressLine(0);
                             int index = result.indexOf("-");
+
+                            distancia.setText("distancia ate voce " + distance + " m");
+
                             try {
                                 String text = result.substring(0, index);
                                 String text2 = result.substring(index+2);
                                 address1.setText(text);
                                 address2.setText(text2);
+
                             }catch (Exception e){
                                 index = result.indexOf(",");
                                 String text = result.substring(0, index);
