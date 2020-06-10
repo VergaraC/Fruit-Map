@@ -12,6 +12,8 @@ public class Item {
     }
     public void changeclicked (String text){
         clicked = text;
+        System.out.println("COrno");
+        this.titulo = clicked;
     }
     public String getTitulo() {
         return titulo;

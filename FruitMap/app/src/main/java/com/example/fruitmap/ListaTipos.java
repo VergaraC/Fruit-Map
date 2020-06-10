@@ -18,16 +18,16 @@ public class ListaTipos extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private EAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
+    ArrayList<Item> list_items;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_tipos);
 
-        ArrayList<Item> list_items = new ArrayList<>();
+        list_items = new ArrayList<>();
         list_items.add(new Item(R.drawable.cherry, "Cerejeira"));
         list_items.add(new Item(R.drawable.orange, "Laranjeira"));
-        list_items.add(new Item(R.drawable.coconut, "Coqueira"));
+        list_items.add(new Item(R.drawable.coconut, "Coqueiro"));
 
         mRecyclerView = findViewById(R.id.recycler);
         mRecyclerView.setHasFixedSize(true);
