@@ -8,6 +8,7 @@ public class Tree {
     private double quali;
     private double lat;
     private double longi;
+    private double grade;
 
     public Tree(){
 
@@ -22,6 +23,8 @@ public class Tree {
         this.quali = quali;
         this.lat = lat;
         this.longi = longi;
+
+        this.grade = (acesso+quant+quali)/3;
     }
 
     public String getComentario() {
@@ -78,5 +81,9 @@ public class Tree {
 
     public void setLongi(double longi) {
         this.longi = longi;
+    }
+
+    public double getGrade() {
+        return this.grade;
     }
 }

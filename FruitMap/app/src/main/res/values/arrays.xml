@@ -8,6 +8,26 @@
         <item name="Mangueira">Mangueira</item>
         <item name="Coqueiro ">Coqueiro</item>
     </string-array>
+
+    <string-array name="trees">
+        <item>All</item>
+        <item>Laranjeira</item>
+        <item>Jabuticabeira</item>
+        <item>Macieira</item>
+        <item>Goiabeira</item>
+        <item>Mangueira</item>
+        <item>Coqueiro</item>
+    </string-array>
+
+    <string-array name="grades">
+        <item>All</item>
+        <item>0-1</item>
+        <item>1-2</item>
+        <item>2-3</item>
+        <item>3-4</item>
+        <item>4-5</item>
+    </string-array>
+
     <string-array name="labels_acesso">
         <item name="0">Impossivel</item>
         <item name="1">Muito de difil</item>
