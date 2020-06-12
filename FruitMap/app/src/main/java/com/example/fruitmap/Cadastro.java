@@ -3,12 +3,15 @@ package com.example.fruitmap;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +33,8 @@ public class Cadastro extends AppCompatActivity {
     double rating_quant;
     double rating_acesso;
 
+    private static final int CAMERA_REQUEST_CODE = 1;
+
     FirebaseDatabase db;
     DatabaseReference ref;
 
@@ -48,6 +53,8 @@ public class Cadastro extends AppCompatActivity {
         final RatingBar quant = findViewById(R.id.R_quant_fruta);
         final EditText extra = findViewById(R.id.extra);
         final Button cadastrar = findViewById(R.id.localizacao);
+        final ImageView fotoArvore = findViewById(R.id.fotoarvore);
+        final Button botaoFoto = findViewById(R.id.ButtonPhoto);
 
         Bundle bundle = getIntent().getExtras();
         final double lLat = bundle.getDouble("latitude");
@@ -55,6 +62,32 @@ public class Cadastro extends AppCompatActivity {
 
         System.out.println("Cadastro latitude: " + lLat);
         System.out.println("Cadastro longitude: " + lLong);
+
+        botaoFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, CAMERA_REQUEST_CODE);
+
+            }
+        });
+
+        /*onActivityResult(int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+        }*/
+
+        @Override
+        protected void onActivityResult(int requestCode,int resultCode, Intent data) {
+            if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                fotoArvore.setImageBitmap(imageBitmap);
+            }
+        }
+
+
+
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +99,7 @@ public class Cadastro extends AppCompatActivity {
                 rating_quant = quant.getRating();
                 rating_acesso = acesso.getRating();
                 String comentario = extra.getText().toString();
+                // = fotoArvore.getImage();
 
                 Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
 
