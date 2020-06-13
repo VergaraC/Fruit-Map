@@ -15,9 +15,9 @@
         android:id="@+id/buttonCadastro"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="560dp"
-        android:layout_marginLeft="320dp"
-        android:src="@drawable/plus"
+        android:layout_marginTop="530dp"
+        android:layout_marginLeft="355dp"
+        android:src="@drawable/treeicon"
         android:background="@drawable/rounded_button">
     </ImageButton>
 

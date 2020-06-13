@@ -6,10 +6,12 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -80,6 +82,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         trees = database.getReference("trees");
 
         /* ========================================================== */
+
     }
 
     @Override
@@ -199,6 +202,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
+                findFragmentById(R.id.map);
+        View mapView = mapFragment.getView();
+        View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+        RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) locationButton.getLayoutParams();
+
+        // position on right bottom
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        rlp.setMargins(0, 0, 100, 370);
     }
 
     private void moveCamera(LatLng latLng, float zoom){
