@@ -3,12 +3,19 @@ package com.example.fruitmap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +39,8 @@ import com.google.firebase.storage.UploadTask;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,11 +51,14 @@ public class Cadastro extends AppCompatActivity {
     double rating_quant;
     double rating_acesso;
 
-    private static final int CAMERA_REQUEST_CODE = 1;
+    private static final int CAMERA_PERM_CODE = 101;
+    private static final int CAMERA_REQUEST_CODE = 102;
+
+    private String lastPath;
 
     FirebaseDatabase db;
     DatabaseReference ref;
-    private StorageReference mStorage;
+    StorageReference storageReference;
 
 
     @Override
@@ -57,7 +69,7 @@ public class Cadastro extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("trees");
 
-        mStorage = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         final Spinner tipo = findViewById(R.id.tipo);
 
@@ -67,7 +79,6 @@ public class Cadastro extends AppCompatActivity {
         final EditText extra = findViewById(R.id.extra);
         final Button cadastrar = findViewById(R.id.localizacao);
 
-        final ImageView fotoArvore = findViewById(R.id.fotoarvore);
         final Button botaoFoto = findViewById(R.id.ButtonPhoto);
 
         Bundle bundle = getIntent().getExtras();
@@ -76,15 +87,6 @@ public class Cadastro extends AppCompatActivity {
 
         System.out.println("Cadastro latitude: " + lLat);
         System.out.println("Cadastro longitude: " + lLong);
-
-        botaoFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                startActivityForResult(intent, CAMERA_REQUEST_CODE);
-            }
-        });
 
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,23 +114,45 @@ public class Cadastro extends AppCompatActivity {
             } */
             }
         });
+
+        botaoFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askCameraPermissions();
+            }
+        });
+    }
+
+    private void askCameraPermissions(){
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
+        } else{
+            openCamera();
+        }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == CAMERA_PERM_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                openCamera();
+            } else{
+                Toast.makeText(this, "Camera Permission Required", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
-        if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK){
-            Uri uri = data.getData();
+    private void openCamera(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAMERA_REQUEST_CODE);
+    }
 
-            StorageReference filepath = mStorage.child("Photos").child(uri.getLastPathSegment());
-
-            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(Cadastro.this, "Uploading Finished ...", Toast.LENGTH_LONG).show();
-                }
-            });
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == CAMERA_REQUEST_CODE){
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            ImageView fotoArvore = findViewById(R.id.fotoarvore);
+            fotoArvore.setImageBitmap(image);
         }
     }
 }
