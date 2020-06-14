@@ -3,6 +3,8 @@ package com.example.fruitmap;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +30,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -39,6 +42,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.File;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -144,7 +149,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                     LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
 
-                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                    MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
+
+                    if (arvore.getTipo().equals("Laranjeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                    } else if (arvore.getTipo().equals("Macieira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                    } else if (arvore.getTipo().equals("Mangueira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                    } else if (arvore.getTipo().equals("Coqueiro")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
+                    }else if (arvore.getTipo().equals("Jabuticabeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                    }else if (arvore.getTipo().equals("Goiabeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                    }else{
+                        System.out.println("Sem icon");
+                    }
+
+                    mMap.addMarker(marker).setTag(tree.getKey());
                 }
             }
 

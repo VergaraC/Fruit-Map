@@ -11,6 +11,20 @@
         tools:context=".MapsActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/nav_bar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="FruitMap"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textAlignment="center"/>
+
     <ImageButton
         android:id="@+id/buttonCadastro"
         android:layout_width="50dp"
@@ -25,24 +39,20 @@
         android:id="@+id/spinner1"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="160dp"
         android:entries="@array/trees"
-        android:background="#FFFFFF">
+        android:background="@drawable/filters">
     </Spinner>
 
     <Spinner
         android:id="@+id/spinner2"
         android:layout_width="110dp"
         android:layout_height="38dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="77dp"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="100dp"
         android:entries="@array/grades"
-        android:background="#FFFFFF">
+        android:background="@drawable/filters">
     </Spinner>
 
 </RelativeLayout>

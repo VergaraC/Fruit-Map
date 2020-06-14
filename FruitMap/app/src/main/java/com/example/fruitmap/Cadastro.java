@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -83,7 +84,7 @@ public class Cadastro extends AppCompatActivity {
         final EditText extra = findViewById(R.id.extra);
         final Button cadastrar = findViewById(R.id.localizacao);
 
-        final Button botaoFoto = findViewById(R.id.ButtonPhoto);
+        final ImageButton botaoFoto = findViewById(R.id.ButtonPhoto);
 
         Bundle bundle = getIntent().getExtras();
         final double lLat = bundle.getDouble("latitude");
@@ -160,7 +161,7 @@ public class Cadastro extends AppCompatActivity {
                 mediaScanIntent.setData(contentUri);
                 this.sendBroadcast(mediaScanIntent);
 
-                uploadImageToFirebase(f.getName(), contentUri);
+                //uploadImageToFirebase(f.getName(), contentUri);
             }
         }
     }

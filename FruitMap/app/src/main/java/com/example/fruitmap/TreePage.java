@@ -76,7 +76,7 @@ public class TreePage extends AppCompatActivity {
                             String result = address.getAddressLine(0);
                             int index = result.indexOf("-");
 
-                            distancia.setText("distancia ate voce " + distance + " m");
+                            distancia.setText( distance + " m");
 
                             try {
                                 String text = result.substring(0, index);
