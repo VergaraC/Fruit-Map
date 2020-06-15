@@ -265,7 +265,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
 
         final AlertDialog.Builder gradeFilterDialog = new AlertDialog.Builder(this);
-        gradeFilterDialog.setTitle("Filtrar por tipo");
+        gradeFilterDialog.setTitle("Filtrar por nota");
         gradeFilterDialog.setItems(R.array.grades, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

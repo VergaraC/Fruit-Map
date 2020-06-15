@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -43,7 +44,7 @@ public class TreePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_page);
 
-        geocoder = new Geocoder(this, Locale.getDefault());
+        geocoder = new Geocoder(TreePage.this, Locale.getDefault());
 
         database = FirebaseDatabase.getInstance();
         trees = database.getReference("trees");
@@ -58,6 +59,7 @@ public class TreePage extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         final String treeId = bundle.getString("id");
+
         int distance = bundle.getInt("distance");
         System.out.println("distancia na TreePage "+distance);
 
@@ -71,9 +73,16 @@ public class TreePage extends AppCompatActivity {
                     if (tree.getKey().equals(treeId)) {
                         Tree arvore = tree.getValue(Tree.class);
                         tipo.setText(arvore.getTipo());
+                        acesso.setRating((float) arvore.getAcesso());
+                        qualidade.setRating((float) arvore.getQuali());
+                        quantidade.setRating((float) arvore.getQuant());
 
                         try {
-                            addresses = geocoder.getFromLocation(arvore.getLat(), arvore.getLongi(), 1);
+                            DecimalFormat df = new DecimalFormat();
+                            df.setMaximumFractionDigits(3);
+                            double lat = Double.parseDouble(df.format(arvore.getLat()));
+                            double lon = Double.parseDouble(df.format(arvore.getLongi()));
+                            addresses = geocoder.getFromLocation(lat, lon, 1);
                             Address address = addresses.get(0);
                             String result = address.getAddressLine(0);
                             int index = result.indexOf("-");

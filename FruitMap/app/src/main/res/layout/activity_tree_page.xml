@@ -153,6 +153,6 @@
         android:textSize="18sp"
         android:textColor="#050505"
         android:background="@drawable/button_style"
-        android:text="Comentar"/>
+        android:text="Avaliar"/>
 
 </RelativeLayout>
