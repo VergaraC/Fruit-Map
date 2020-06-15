@@ -58,8 +58,10 @@ public class TreePage extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         final String treeId = bundle.getString("id");
-        final int distance = bundle.getInt("distance");
+        int distance = bundle.getInt("distance");
         System.out.println("distancia na TreePage "+distance);
+
+        final int distFinal = distance/1000;
 
         trees.addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,8 +78,8 @@ public class TreePage extends AppCompatActivity {
                             String result = address.getAddressLine(0);
                             int index = result.indexOf("-");
 
-                            distancia.setText( distance + " m");
-
+                            distancia.setText("Distância: " + distFinal + "km");
+                          
                             try {
                                 String text = result.substring(0, index);
                                 String text2 = result.substring(index+2);
