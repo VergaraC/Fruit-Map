@@ -18,6 +18,7 @@
         />
 
     <ImageView
+        android:id="@+id/treeImage"
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_marginTop="35dp"
@@ -153,6 +154,6 @@
         android:textSize="18sp"
         android:textColor="#050505"
         android:background="@drawable/button_style"
-        android:text="Comentar"/>
+        android:text="Avaliar"/>
 
 </RelativeLayout>

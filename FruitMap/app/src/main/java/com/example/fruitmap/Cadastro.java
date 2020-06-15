@@ -53,9 +53,9 @@ import java.util.Map;
 
 public class Cadastro extends AppCompatActivity {
 
-    double rating_quali;
-    double rating_quant;
-    double rating_acesso;
+    float rating_quali;
+    float rating_quant;
+    float rating_acesso;
 
     private static final int CAMERA_PERM_CODE = 101;
     private static final int CAMERA_REQUEST_CODE = 102;
@@ -66,6 +66,8 @@ public class Cadastro extends AppCompatActivity {
     DatabaseReference ref;
     StorageReference storageReference;
 
+    boolean CAMERA_OK;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +76,7 @@ public class Cadastro extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("trees");
 
-        storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference("trees");
 
         //final Spinner tipo = findViewById(R.id.tipo);
 
@@ -104,20 +106,27 @@ public class Cadastro extends AppCompatActivity {
                 rating_quant = quant.getRating();
                 rating_acesso = acesso.getRating();
                 String comentario = extra.getText().toString();
-                // = fotoArvore.getImage();
 
                 Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
 
                 String id = ref.push().getKey();
                 ref.child(id).setValue(arvore);
 
-                // if (DEU CERTO){
                 Intent intent = new Intent(Cadastro.this, MapActivity.class);
+
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Cadastro concluido, obrigado! ", Toast.LENGTH_SHORT).show();
-                /* }else{
-                Toast.makeText(getApplicationContext(), "Ocorreu alguma problema de criar o cadastro! Certifique-se que esta conectado a Internet! ", Toast.LENGTH_SHORT).show();
-            } */
+
+                File f = new File(currentPhotoPath);
+
+                Log.d("tag", "Absolute URL of image is " + Uri.fromFile(f));
+
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                Uri contentUri = Uri.fromFile(f);
+                mediaScanIntent.setData(contentUri);
+                sendBroadcast(mediaScanIntent);
+
+                uploadImageToFirebase(f.getName(), contentUri, id);
             }
         });
 
@@ -150,25 +159,20 @@ public class Cadastro extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == CAMERA_REQUEST_CODE){
-            if (resultCode == Activity.RESULT_OK){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                CAMERA_OK = true;
+
                 File f = new File(currentPhotoPath);
                 ImageView fotoArvore = findViewById(R.id.fotoarvore);
                 fotoArvore.setImageURI(Uri.fromFile(f));
-                Log.d("tag", "Absolute URL of image is " + Uri.fromFile(f));
-
-                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                Uri contentUri = Uri.fromFile(f);
-                mediaScanIntent.setData(contentUri);
-                this.sendBroadcast(mediaScanIntent);
-
-                //uploadImageToFirebase(f.getName(), contentUri);
             }
         }
     }
 
-    private void uploadImageToFirebase(String name, Uri contentUri){
-        final StorageReference image = storageReference.child("images/" + name);
+    private void uploadImageToFirebase(String name, Uri contentUri, String id){
+        final StorageReference image = storageReference.child(id).child(name);
         image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

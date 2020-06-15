@@ -5,18 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,6 +32,9 @@ public class TreePage extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference trees;
+
+    FirebaseStorage storage;
+    StorageReference ref;
 
     TextView tipo;
     TextView address1;
@@ -34,6 +45,8 @@ public class TreePage extends AppCompatActivity {
     RatingBar qualidade;
     RatingBar quantidade;
 
+    ImageView treeImage;
+
     Geocoder geocoder;
 
     List<Address> addresses;
@@ -43,10 +56,13 @@ public class TreePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_page);
 
-        geocoder = new Geocoder(this, Locale.getDefault());
+        geocoder = new Geocoder(TreePage.this, Locale.getDefault());
 
         database = FirebaseDatabase.getInstance();
         trees = database.getReference("trees");
+
+        storage = FirebaseStorage.getInstance();
+        ref = storage.getReference("trees");
 
         tipo = findViewById(R.id.tipo_t);
         address1 = findViewById(R.id.address1_t);
@@ -55,9 +71,11 @@ public class TreePage extends AppCompatActivity {
         qualidade = findViewById(R.id.R_qualiW);
         acesso = findViewById(R.id.R_acessoW);
         quantidade = findViewById(R.id.R_quantW);
+        treeImage = findViewById(R.id.treeImage);
 
         Bundle bundle = getIntent().getExtras();
         final String treeId = bundle.getString("id");
+
         int distance = bundle.getInt("distance");
         System.out.println("distancia na TreePage "+distance);
 
@@ -71,9 +89,16 @@ public class TreePage extends AppCompatActivity {
                     if (tree.getKey().equals(treeId)) {
                         Tree arvore = tree.getValue(Tree.class);
                         tipo.setText(arvore.getTipo());
+                        acesso.setRating((float) arvore.getAcesso());
+                        qualidade.setRating((float) arvore.getQuali());
+                        quantidade.setRating((float) arvore.getQuant());
 
                         try {
-                            addresses = geocoder.getFromLocation(arvore.getLat(), arvore.getLongi(), 1);
+                            DecimalFormat df = new DecimalFormat();
+                            df.setMaximumFractionDigits(3);
+                            double lat = Double.parseDouble(df.format(arvore.getLat()));
+                            double lon = Double.parseDouble(df.format(arvore.getLongi()));
+                            addresses = geocoder.getFromLocation(lat, lon, 1);
                             Address address = addresses.get(0);
                             String result = address.getAddressLine(0);
                             int index = result.indexOf("-");
