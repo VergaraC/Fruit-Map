@@ -1,6 +1,9 @@
 package com.example.fruitmap;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -63,14 +66,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     DatabaseReference trees;
 
     Spinner spinner1, spinner2;
+    Button typeFilterButton, gradeFilterButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        spinner1 = findViewById(R.id.spinner1);
-        spinner2 = findViewById(R.id.spinner2);
+        typeFilterButton = findViewById(R.id.buttonType);
+        gradeFilterButton = findViewById(R.id.buttonGrade);
 
         getLocationPermission();
 
@@ -88,6 +92,23 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
+
+        trees.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot tree : dataSnapshot.getChildren()){
+                    Tree arvore = tree.getValue(Tree.class);
+
+                    LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
+                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Metodo getDeviceLocation() transferido
 
@@ -131,23 +152,123 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
 
-        //Adicionar markers
-
-        trees.addListenerForSingleValueEvent(new ValueEventListener() {
+        final AlertDialog.Builder typeFilterDialog = new AlertDialog.Builder(this);
+        typeFilterDialog.setTitle("Filtrar por tipo");
+        typeFilterDialog.setItems(R.array.trees, new DialogInterface.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot tree : dataSnapshot.getChildren()){
-                    Tree arvore = tree.getValue(Tree.class);
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String[] treesArray =  getResources().getStringArray(R.array.trees);
+                final String selected = treesArray[i];
+                System.out.println(selected);
+                mMap.clear();
+                if (selected.equalsIgnoreCase("all")) {
+                    trees.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot tree : dataSnapshot.getChildren()){
+                                Tree arvore = tree.getValue(Tree.class);
 
-                    LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
+                                LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
+                                mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                            }
+                        }
 
-                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                } else {
+                    mMap.clear();
+                    trees.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot tree : dataSnapshot.getChildren()){
+                                Tree arvore = tree.getValue(Tree.class);
+
+                                if (arvore.getTipo().equalsIgnoreCase(selected)) {
+                                    LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
+                                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
+        });
 
+        final AlertDialog.Builder gradeFilterDialog = new AlertDialog.Builder(this);
+        gradeFilterDialog.setTitle("Filtrar por tipo");
+        gradeFilterDialog.setItems(R.array.grades, new DialogInterface.OnClickListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String[] grades =  getResources().getStringArray(R.array.grades);
+                final String selected = grades[i];
+                System.out.println(selected);
+                mMap.clear();
+                if (selected.equalsIgnoreCase("all")) {
+                    trees.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot tree : dataSnapshot.getChildren()){
+                                Tree arvore = tree.getValue(Tree.class);
 
+                                LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
+                                mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                } else {
+                    mMap.clear();
+                    trees.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot tree : dataSnapshot.getChildren()){
+                                Tree arvore = tree.getValue(Tree.class);
+
+
+                                int num1 = Integer.parseInt(selected.split("-")[0]);
+                                int num2 = Integer.parseInt(selected.split("-")[1]);
+                                System.out.println(num1);
+                                System.out.println(num2);
+                                System.out.println(arvore.getGrade());
+                                if (arvore.getGrade() >= num1 && arvore.getGrade() <= num2) {
+                                    LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
+                                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+        });
+
+        typeFilterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                typeFilterDialog.show();
+            }
+        });
+
+        gradeFilterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gradeFilterDialog.show();
             }
         });
 
