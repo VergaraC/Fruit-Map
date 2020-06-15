@@ -5,16 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,6 +32,9 @@ public class TreePage extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference trees;
 
+    FirebaseStorage storage;
+    StorageReference ref;
+
     TextView tipo;
     TextView address1;
     TextView address2;
@@ -33,6 +43,8 @@ public class TreePage extends AppCompatActivity {
     RatingBar acesso;
     RatingBar qualidade;
     RatingBar quantidade;
+
+    ImageView treeImage;
 
     Geocoder geocoder;
 
@@ -48,6 +60,9 @@ public class TreePage extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         trees = database.getReference("trees");
 
+        storage = FirebaseStorage.getInstance();
+        ref = storage.getReference("trees");
+
         tipo = findViewById(R.id.tipo_t);
         address1 = findViewById(R.id.address1_t);
         address2 = findViewById(R.id.address2_t);
@@ -55,6 +70,7 @@ public class TreePage extends AppCompatActivity {
         qualidade = findViewById(R.id.R_qualiW);
         acesso = findViewById(R.id.R_acessoW);
         quantidade = findViewById(R.id.R_quantW);
+        treeImage = findViewById(R.id.treeImage);
 
         Bundle bundle = getIntent().getExtras();
         final String treeId = bundle.getString("id");
