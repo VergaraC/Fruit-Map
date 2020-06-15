@@ -13,6 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
 import java.util.ArrayList;
 
 public class ListaTipos extends AppCompatActivity {
@@ -31,8 +33,13 @@ public class ListaTipos extends AppCompatActivity {
 
         list_items = new ArrayList<>();
         list_items.add(new Item(R.drawable.cherry, "Cerejeira"));
-        list_items.add(new Item(R.drawable.orange, "Laranjeira"));
         list_items.add(new Item(R.drawable.coconut, "Coqueiro"));
+        list_items.add(new Item(R.drawable.guava, "Goiabeira"));
+        list_items.add(new Item(R.drawable.jabuticaba, "Jabuticabeira"));
+        list_items.add(new Item(R.drawable.orange, "Laranjeira"));
+        list_items.add(new Item(R.drawable.apple, "Macieira"));
+        list_items.add(new Item(R.drawable.mango, "Mangueira"));
+
 
         mRecyclerView = findViewById(R.id.recycler);
         mRecyclerView.setHasFixedSize(true);
