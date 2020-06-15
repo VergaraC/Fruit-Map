@@ -38,17 +38,6 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/image_radius"/>
 
-
-    <Spinner
-        android:id="@+id/tipo"
-        android:layout_width="220dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="245dp"
-        android:entries="@array/labels_tipos"
-        android:prompt="@string/tipo_de_arvore"
-        android:textSize="16sp" />
-
     <TextView
         android:id="@+id/acesso"
         android:layout_width="100dp"
