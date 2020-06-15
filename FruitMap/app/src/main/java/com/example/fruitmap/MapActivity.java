@@ -6,13 +6,17 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,6 +33,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -40,6 +45,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.File;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -64,8 +71,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     FirebaseDatabase database;
     DatabaseReference trees;
-
-    Spinner spinner1, spinner2;
     Button typeFilterButton, gradeFilterButton;
 
     @Override
@@ -84,6 +89,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         trees = database.getReference("trees");
 
         /* ========================================================== */
+
     }
 
     @Override
@@ -100,7 +106,26 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     Tree arvore = tree.getValue(Tree.class);
 
                     LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
-                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                  
+                    MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
+
+                    if (arvore.getTipo().equals("Laranjeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                    } else if (arvore.getTipo().equals("Macieira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                    } else if (arvore.getTipo().equals("Mangueira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                    } else if (arvore.getTipo().equals("Coqueiro")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
+                    }else if (arvore.getTipo().equals("Jabuticabeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                    }else if (arvore.getTipo().equals("Goiabeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                    }else{
+                        System.out.println("Sem icon");
+                    }
+
+                    mMap.addMarker(marker).setTag(tree.getKey());
                 }
             }
 
@@ -169,7 +194,26 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 Tree arvore = tree.getValue(Tree.class);
 
                                 LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
-                                mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                              
+                                MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
+
+                                if (arvore.getTipo().equals("Laranjeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                } else if (arvore.getTipo().equals("Macieira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                } else if (arvore.getTipo().equals("Mangueira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                } else if (arvore.getTipo().equals("Coqueiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
+                                }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                }else if (arvore.getTipo().equals("Goiabeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                }else{
+                                    System.out.println("Sem icon");
+                                }
+
+                                mMap.addMarker(marker).setTag(tree.getKey());                              
                             }
                         }
 
@@ -188,7 +232,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                                 if (arvore.getTipo().equalsIgnoreCase(selected)) {
                                     LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
-                                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                                    MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
+
+                                    if (arvore.getTipo().equals("Laranjeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                    } else if (arvore.getTipo().equals("Macieira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                    } else if (arvore.getTipo().equals("Mangueira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                    } else if (arvore.getTipo().equals("Coqueiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
+                                    }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                    }else if (arvore.getTipo().equals("Goiabeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                    }else{
+                                        System.out.println("Sem icon");
+                                    }
+
+                                    mMap.addMarker(marker).setTag(tree.getKey()); 
                                 }
                             }
                         }
@@ -219,7 +281,26 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 Tree arvore = tree.getValue(Tree.class);
 
                                 LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
-                                mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                              
+                                MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
+
+                                if (arvore.getTipo().equals("Laranjeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                } else if (arvore.getTipo().equals("Macieira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                } else if (arvore.getTipo().equals("Mangueira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                } else if (arvore.getTipo().equals("Coqueiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
+                                }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                }else if (arvore.getTipo().equals("Goiabeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                }else{
+                                    System.out.println("Sem icon");
+                                }
+
+                                mMap.addMarker(marker).setTag(tree.getKey()); 
                             }
                         }
 
@@ -244,7 +325,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 System.out.println(arvore.getGrade());
                                 if (arvore.getGrade() >= num1 && arvore.getGrade() <= num2) {
                                     LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
-                                    mMap.addMarker(new MarkerOptions().position(location).title(arvore.getTipo())).setTag(tree.getKey());
+                                    MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
+
+                                    if (arvore.getTipo().equals("Laranjeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                    } else if (arvore.getTipo().equals("Macieira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                    } else if (arvore.getTipo().equals("Mangueira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                    } else if (arvore.getTipo().equals("Coqueiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
+                                    }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                    }else if (arvore.getTipo().equals("Goiabeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                    }else{
+                                        System.out.println("Sem icon");
+                                    }
+
+                                    mMap.addMarker(marker).setTag(tree.getKey()); 
                                 }
                             }
                         }
@@ -320,6 +419,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
+                findFragmentById(R.id.map);
+        View mapView = mapFragment.getView();
+        View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+        RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) locationButton.getLayoutParams();
+
+        // position on right bottom
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+        rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        rlp.setMargins(0, 0, 100, 370);
     }
 
     private void moveCamera(LatLng latLng, float zoom){
