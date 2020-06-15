@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +25,10 @@ public class ListaTipos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_tipos);
 
+        Bundle bundle = getIntent().getExtras();
+        final double lLat = bundle.getDouble("latitude");
+        final double lLong = bundle.getDouble("longitude");
+
         list_items = new ArrayList<>();
         list_items.add(new Item(R.drawable.cherry, "Cerejeira"));
         list_items.add(new Item(R.drawable.orange, "Laranjeira"));
@@ -36,6 +41,25 @@ public class ListaTipos extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListerner(new EAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                System.out.println("TESTE pf");
+                String tipo = list_items.get(position).changeclicked("fam");
+                mAdapter.notifyItemChanged(position);
+                Intent intent = new Intent(ListaTipos.this, Cadastro.class);
+
+                intent.putExtra("Tipo", tipo);
+                intent.putExtra("latitude", lLat);
+                intent.putExtra("longitude", lLong);
+
+                System.out.println("Tipo: " + tipo);
+
+
+                startActivity(intent);
+
+            }
+        });
 
     }
     public void changeItem(int position, String text){

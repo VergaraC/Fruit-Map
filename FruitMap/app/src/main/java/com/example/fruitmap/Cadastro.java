@@ -76,7 +76,7 @@ public class Cadastro extends AppCompatActivity {
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        final Spinner tipo = findViewById(R.id.tipo);
+        //final Spinner tipo = findViewById(R.id.tipo);
 
         final RatingBar quali = findViewById(R.id.R_quali_fruta);
         final RatingBar acesso = findViewById(R.id.R_acesso);
@@ -89,6 +89,7 @@ public class Cadastro extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         final double lLat = bundle.getDouble("latitude");
         final double lLong = bundle.getDouble("longitude");
+        final String tipoCadastro = bundle.getString("Tipo");
 
         System.out.println("Cadastro latitude: " + lLat);
         System.out.println("Cadastro longitude: " + lLong);
@@ -97,7 +98,7 @@ public class Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String tipoCadastro = tipo.getSelectedItem().toString();
+                //String tipoCadastro = tipo.getSelectedItem().toString();
 
                 rating_quali = quali.getRating();
                 rating_quant = quant.getRating();
