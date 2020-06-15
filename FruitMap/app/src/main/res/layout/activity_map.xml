@@ -11,13 +11,27 @@
         tools:context=".MapsActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/nav_bar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="FruitMap"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textAlignment="center"/>
+
     <ImageButton
         android:id="@+id/buttonCadastro"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="560dp"
-        android:layout_marginLeft="320dp"
-        android:src="@drawable/plus"
+        android:layout_marginTop="530dp"
+        android:layout_marginLeft="355dp"
+        android:src="@drawable/treeicon"
         android:background="@drawable/rounded_button">
     </ImageButton>
 

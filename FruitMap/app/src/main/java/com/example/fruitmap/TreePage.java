@@ -79,7 +79,7 @@ public class TreePage extends AppCompatActivity {
                             int index = result.indexOf("-");
 
                             distancia.setText("Distância: " + distFinal + "km");
-
+                          
                             try {
                                 String text = result.substring(0, index);
                                 String text2 = result.substring(index+2);

@@ -7,44 +7,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TreePage"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/theme2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:layout_marginTop="210dp"
+        android:background="@drawable/radius_background"
+        />
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
         android:contentDescription="@string/foto_da_arvore"
-        android:src="@drawable/tree"/>
+        android:src="@drawable/tree"
+        android:background="@drawable/image_radius"/>
 
     <!-- Tipo de Arvore-->
     <TextView
         android:id="@+id/tipo_t"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="250dp"
         android:layout_marginStart="30dp"
         android:textStyle="bold"
         android:textSize="22sp"
-        android:textAlignment="center"
         android:text="Tipo"
-        android:textColor="#000000"/>
+        android:textColor="#050505"/>
 
     <!-- Endereco 1 -->
+
     <TextView
         android:id="@+id/address1_t"
         android:layout_width="350dp"
         android:layout_height="34dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="300dp"
         android:textSize="18sp"
         android:text="Endereço"
-        android:textColor="#000000"/>
+        android:textColor="#050505"/>
     <!-- Endereco 2 -->
     <TextView
         android:id="@+id/address2_t"
         android:layout_width="190dp"
         android:layout_height="35dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="340dp"
         android:layout_marginStart="50dp"
         android:textSize="14sp"
         android:text="Address"
@@ -55,12 +65,12 @@
         android:id="@+id/d_t"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="340dp"
         android:layout_marginStart="250dp"
         android:textSize="16sp"
         android:text="distancia"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#050505"
         />
 
     <!-- acesso -->
@@ -141,8 +151,8 @@
         android:layout_marginTop="580dp"
         android:layout_centerHorizontal="true"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:background="#4875B4"
+        android:textColor="#050505"
+        android:background="@drawable/button_style"
         android:text="Comentar"/>
 
 </RelativeLayout>
