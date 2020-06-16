@@ -53,9 +53,9 @@ import java.util.Map;
 
 public class Cadastro extends AppCompatActivity {
 
-    double rating_quali;
-    double rating_quant;
-    double rating_acesso;
+    float rating_quali;
+    float rating_quant;
+    float rating_acesso;
 
     private static final int CAMERA_PERM_CODE = 101;
     private static final int CAMERA_REQUEST_CODE = 102;
@@ -65,6 +65,8 @@ public class Cadastro extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference ref;
     StorageReference storageReference;
+
+    boolean CAMERA_OK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,7 @@ public class Cadastro extends AppCompatActivity {
 
         storageReference = FirebaseStorage.getInstance().getReference("trees");
 
-        final Spinner tipo = findViewById(R.id.tipo);
+        //final Spinner tipo = findViewById(R.id.tipo);
 
         final RatingBar quali = findViewById(R.id.R_quali_fruta);
         final RatingBar acesso = findViewById(R.id.R_acesso);
@@ -89,6 +91,7 @@ public class Cadastro extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         final double lLat = bundle.getDouble("latitude");
         final double lLong = bundle.getDouble("longitude");
+        final String tipoCadastro = bundle.getString("Tipo");
 
         System.out.println("Cadastro latitude: " + lLat);
         System.out.println("Cadastro longitude: " + lLong);
@@ -97,13 +100,12 @@ public class Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String tipoCadastro = tipo.getSelectedItem().toString();
+                //String tipoCadastro = tipo.getSelectedItem().toString();
 
                 rating_quali = quali.getRating();
                 rating_quant = quant.getRating();
                 rating_acesso = acesso.getRating();
                 String comentario = extra.getText().toString();
-                // = fotoArvore.getImage();
 
                 final Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
                 final String id = ref.push().getKey();
@@ -128,10 +130,10 @@ public class Cadastro extends AppCompatActivity {
                 ref.child(id).setValue(arvore);
 
                 Intent intent = new Intent(Cadastro.this, MapActivity.class);
+
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Cadastro concluido, obrigado! ", Toast.LENGTH_SHORT).show();
 
-            }
         });
 
         botaoFoto.setOnClickListener(new View.OnClickListener() {
@@ -175,14 +177,12 @@ public class Cadastro extends AppCompatActivity {
                 Uri contentUri = Uri.fromFile(f);
                 mediaScanIntent.setData(contentUri);
                 this.sendBroadcast(mediaScanIntent);
-
-                //uploadImageToFirebase(f.getName(), contentUri);
             }
         }
     }
 
-    /*private void uploadImageToFirebase(String name, Uri contentUri){
-        final StorageReference image = storageReference.child("images/" + name);
+    private void uploadImageToFirebase(String name, Uri contentUri, String id){
+        final StorageReference image = storageReference.child(id).child(name);
         image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

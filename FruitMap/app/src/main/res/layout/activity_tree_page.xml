@@ -12,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="700dp"
         android:layout_marginTop="210dp"
         android:background="@drawable/radius_background"
         />
@@ -154,6 +154,6 @@
         android:textSize="18sp"
         android:textColor="#050505"
         android:background="@drawable/button_style"
-        android:text="Comentar"/>
+        android:text="Avaliar"/>
 
 </RelativeLayout>

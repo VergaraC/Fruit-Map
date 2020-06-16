@@ -5,12 +5,15 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
+
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 import java.util.ArrayList;
 
@@ -24,10 +27,28 @@ public class ListaTipos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_tipos);
 
+        Bundle bundle = getIntent().getExtras();
+        final double lLat = bundle.getDouble("latitude");
+        final double lLong = bundle.getDouble("longitude");
+
         list_items = new ArrayList<>();
+        list_items.add(new Item(R.drawable.plum, "Ameixeira"));
+        list_items.add(new Item(R.drawable.raspberry, "Amoreira"));
         list_items.add(new Item(R.drawable.cherry, "Cerejeira"));
-        list_items.add(new Item(R.drawable.orange, "Laranjeira"));
         list_items.add(new Item(R.drawable.coconut, "Coqueiro"));
+        list_items.add(new Item(R.drawable.guava, "Goiabeira"));
+        list_items.add(new Item(R.drawable.jabuticaba, "Jabuticabeira"));
+        list_items.add(new Item(R.drawable.jackfruit, "Jaqueira"));
+        list_items.add(new Item(R.drawable.kiwi, "Kiwizeiro"));
+        list_items.add(new Item(R.drawable.orange, "Laranjeira"));
+        list_items.add(new Item(R.drawable.lime, "Limoeiro"));
+        list_items.add(new Item(R.drawable.siciliano, "Limoeiro Siciliano"));
+        list_items.add(new Item(R.drawable.apple, "Macieira"));
+        list_items.add(new Item(R.drawable.mango, "Mangueira"));
+        list_items.add(new Item(R.drawable.peach, "Pessegueiro"));
+        list_items.add(new Item(R.drawable.tamarindo, "Tamarindeiro"));
+
+
 
         mRecyclerView = findViewById(R.id.recycler);
         mRecyclerView.setHasFixedSize(true);
@@ -36,6 +57,25 @@ public class ListaTipos extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListerner(new EAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                System.out.println("TESTE pf");
+                String tipo = list_items.get(position).changeclicked("fam");
+                mAdapter.notifyItemChanged(position);
+                Intent intent = new Intent(ListaTipos.this, Cadastro.class);
+
+                intent.putExtra("Tipo", tipo);
+                intent.putExtra("latitude", lLat);
+                intent.putExtra("longitude", lLong);
+
+                System.out.println("Tipo: " + tipo);
+
+
+                startActivity(intent);
+
+            }
+        });
 
     }
     public void changeItem(int position, String text){

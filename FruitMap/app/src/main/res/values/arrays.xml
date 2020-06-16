@@ -11,21 +11,30 @@
 
     <string-array name="trees">
         <item>All</item>
-        <item>Laranjeira</item>
-        <item>Jabuticabeira</item>
-        <item>Macieira</item>
-        <item>Goiabeira</item>
-        <item>Mangueira</item>
+        <item>Amexeira</item>
+        <item>Amoreira</item>
+        <item>Cerejeira</item>
         <item>Coqueiro</item>
+        <item>Goiabeira</item>
+        <item>Jabuticabeira</item>
+        <item>Jaqueira</item>
+        <item>Kiwizeiro</item>
+        <item>Laranjeira</item>
+        <item>Limoeiro</item>
+        <item>Limoeiro Siciliano</item>
+        <item>Macieira</item>
+        <item>Mangueira</item>
+        <item>Pessegueiro</item>
+        <item>Tamarindeiro</item>
     </string-array>
 
     <string-array name="grades">
         <item>All</item>
-        <item>0-1</item>
-        <item>1-2</item>
-        <item>2-3</item>
-        <item>3-4</item>
-        <item>4-5</item>
+        <item>1+</item>
+        <item>2+</item>
+        <item>3+</item>
+        <item>4+</item>
+        <item>5</item>
     </string-array>
 
     <string-array name="labels_acesso">

@@ -1,5 +1,7 @@
 package com.example.fruitmap;
 
+import android.content.Intent;
+
 public class Item {
     private int mImageResourece;
     private String titulo;
@@ -10,10 +12,12 @@ public class Item {
         this.mImageResourece = mImageResourece;
         this.titulo = titulo;
     }
-    public void changeclicked (String text){
+    public String changeclicked (String text){
         clicked = text;
-        System.out.println("COrno");
-        this.titulo = clicked;
+        System.out.println("Corno");
+        //this.titulo = clicked;
+        return this.titulo;
+
     }
     public String getTitulo() {
         return titulo;
