@@ -13,7 +13,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -92,6 +92,8 @@ public class TreePage extends AppCompatActivity {
                         acesso.setRating((float) arvore.getAcesso());
                         qualidade.setRating((float) arvore.getQuali());
                         quantidade.setRating((float) arvore.getQuant());
+
+                        Picasso.get().load(arvore.getDownloadUrl()).into(treeImage);
 
                         try {
                             DecimalFormat df = new DecimalFormat();

@@ -9,6 +9,7 @@ public class Tree {
     private double lat;
     private double longi;
     private double grade;
+    private String downloadUrl;
 
     public Tree(){
 
@@ -23,7 +24,7 @@ public class Tree {
         this.quali = quali;
         this.lat = lat;
         this.longi = longi;
-
+        this.downloadUrl = "";
         this.grade = (acesso+quant+quali)/3;
     }
 
@@ -85,5 +86,13 @@ public class Tree {
 
     public double getGrade() {
         return this.grade;
+    }
+
+    public String getDownloadUrl() {
+        return this.downloadUrl;
+    }
+
+    public void setDownloadUrl(String downUrl) {
+        this.downloadUrl = downUrl;
     }
 }

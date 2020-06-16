@@ -107,9 +107,26 @@ public class Cadastro extends AppCompatActivity {
                 rating_acesso = acesso.getRating();
                 String comentario = extra.getText().toString();
 
-                Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
+                final Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
+                final String id = ref.push().getKey();
 
-                String id = ref.push().getKey();
+                final StorageReference imagePath = storageReference.child(id);
+
+                File f = new File(currentPhotoPath);
+                Uri imageUri = Uri.fromFile(f);
+                imagePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        imagePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                final String downloadUrl = uri.toString();
+                                arvore.setDownloadUrl(downloadUrl);
+                            }
+                        });
+                    }
+                });
+
                 ref.child(id).setValue(arvore);
 
                 Intent intent = new Intent(Cadastro.this, MapActivity.class);
@@ -117,17 +134,6 @@ public class Cadastro extends AppCompatActivity {
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Cadastro concluido, obrigado! ", Toast.LENGTH_SHORT).show();
 
-                File f = new File(currentPhotoPath);
-
-                Log.d("tag", "Absolute URL of image is " + Uri.fromFile(f));
-
-                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                Uri contentUri = Uri.fromFile(f);
-                mediaScanIntent.setData(contentUri);
-                sendBroadcast(mediaScanIntent);
-
-                uploadImageToFirebase(f.getName(), contentUri, id);
-            }
         });
 
         botaoFoto.setOnClickListener(new View.OnClickListener() {
@@ -160,13 +166,17 @@ public class Cadastro extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAMERA_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                CAMERA_OK = true;
-
+        if (requestCode == CAMERA_REQUEST_CODE){
+            if (resultCode == Activity.RESULT_OK){
                 File f = new File(currentPhotoPath);
                 ImageView fotoArvore = findViewById(R.id.fotoarvore);
                 fotoArvore.setImageURI(Uri.fromFile(f));
+                Log.d("tag", "Absolute URL of image is " + Uri.fromFile(f));
+
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                Uri contentUri = Uri.fromFile(f);
+                mediaScanIntent.setData(contentUri);
+                this.sendBroadcast(mediaScanIntent);
             }
         }
     }
@@ -191,7 +201,7 @@ public class Cadastro extends AppCompatActivity {
                 Toast.makeText(Cadastro.this, "Upload Failed", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
     private File createImageFile() throws IOException {
         // Create an image file name
