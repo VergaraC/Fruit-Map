@@ -74,7 +74,7 @@ public class Cadastro extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("trees");
 
-        storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference("trees");
 
         final Spinner tipo = findViewById(R.id.tipo);
 
@@ -105,18 +105,32 @@ public class Cadastro extends AppCompatActivity {
                 String comentario = extra.getText().toString();
                 // = fotoArvore.getImage();
 
-                Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
+                final Tree arvore = new Tree(comentario, tipoCadastro, rating_acesso, rating_quant, rating_quali, lLat, lLong);
+                final String id = ref.push().getKey();
 
-                String id = ref.push().getKey();
+                final StorageReference imagePath = storageReference.child(id);
+
+                File f = new File(currentPhotoPath);
+                Uri imageUri = Uri.fromFile(f);
+                imagePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        imagePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                final String downloadUrl = uri.toString();
+                                arvore.setDownloadUrl(downloadUrl);
+                            }
+                        });
+                    }
+                });
+
                 ref.child(id).setValue(arvore);
 
-                // if (DEU CERTO){
                 Intent intent = new Intent(Cadastro.this, MapActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Cadastro concluido, obrigado! ", Toast.LENGTH_SHORT).show();
-                /* }else{
-                Toast.makeText(getApplicationContext(), "Ocorreu alguma problema de criar o cadastro! Certifique-se que esta conectado a Internet! ", Toast.LENGTH_SHORT).show();
-            } */
+
             }
         });
 
@@ -149,6 +163,7 @@ public class Cadastro extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST_CODE){
             if (resultCode == Activity.RESULT_OK){
                 File f = new File(currentPhotoPath);
@@ -166,7 +181,7 @@ public class Cadastro extends AppCompatActivity {
         }
     }
 
-    private void uploadImageToFirebase(String name, Uri contentUri){
+    /*private void uploadImageToFirebase(String name, Uri contentUri){
         final StorageReference image = storageReference.child("images/" + name);
         image.putFile(contentUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -186,7 +201,7 @@ public class Cadastro extends AppCompatActivity {
                 Toast.makeText(Cadastro.this, "Upload Failed", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
     private File createImageFile() throws IOException {
         // Create an image file name

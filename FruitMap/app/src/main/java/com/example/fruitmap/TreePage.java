@@ -13,7 +13,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
@@ -87,6 +87,8 @@ public class TreePage extends AppCompatActivity {
                     if (tree.getKey().equals(treeId)) {
                         Tree arvore = tree.getValue(Tree.class);
                         tipo.setText(arvore.getTipo());
+
+                        Picasso.get().load(arvore.getDownloadUrl()).into(treeImage);
 
                         try {
                             addresses = geocoder.getFromLocation(arvore.getLat(), arvore.getLongi(), 1);
