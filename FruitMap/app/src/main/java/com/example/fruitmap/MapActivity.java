@@ -109,18 +109,36 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                   
                     MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
 
-                    if (arvore.getTipo().equals("Laranjeira")){
-                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
-                    } else if (arvore.getTipo().equals("Macieira")){
-                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
-                    } else if (arvore.getTipo().equals("Mangueira")){
-                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                    if (arvore.getTipo().equals("Ameixeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.plum));
+                    } else if (arvore.getTipo().equals("Amoreira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.raspberry));
+                    } else if (arvore.getTipo().equals("Cerejeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.cherry));
                     } else if (arvore.getTipo().equals("Coqueiro")){
                         marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
-                    }else if (arvore.getTipo().equals("Jabuticabeira")){
-                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
                     }else if (arvore.getTipo().equals("Goiabeira")){
                         marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                    }else if (arvore.getTipo().equals("Jabuticabeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                    }else if (arvore.getTipo().equals("Jaqueira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jackfruit));
+                    } else if (arvore.getTipo().equals("Kiwizeiro")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.kiwi));
+                    } else if (arvore.getTipo().equals("Laranjeira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                    }else if (arvore.getTipo().equals("Limoeiro")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.lime));
+                    }else if (arvore.getTipo().equals("Limoeiro Siciliano")) {
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.siciliano));
+                    }else if (arvore.getTipo().equals("Macieira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                    }else if (arvore.getTipo().equals("Mangueira")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                    } else if (arvore.getTipo().equals("Pessegueiro")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.peach));
+                    } else if (arvore.getTipo().equals("Tamarindeiro")){
+                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.tamarindo));
                     }else{
                         System.out.println("Sem icon");
                     }
@@ -197,18 +215,36 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                               
                                 MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
 
-                                if (arvore.getTipo().equals("Laranjeira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
-                                } else if (arvore.getTipo().equals("Macieira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
-                                } else if (arvore.getTipo().equals("Mangueira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                if (arvore.getTipo().equals("Ameixeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.plum));
+                                } else if (arvore.getTipo().equals("Amoreira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.raspberry));
+                                } else if (arvore.getTipo().equals("Cerejeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.cherry));
                                 } else if (arvore.getTipo().equals("Coqueiro")){
                                     marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
-                                }else if (arvore.getTipo().equals("Jabuticabeira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
                                 }else if (arvore.getTipo().equals("Goiabeira")){
                                     marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                }else if (arvore.getTipo().equals("Jaqueira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jackfruit));
+                                } else if (arvore.getTipo().equals("Kiwizeiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.kiwi));
+                                } else if (arvore.getTipo().equals("Laranjeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                }else if (arvore.getTipo().equals("Limoeiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.lime));
+                                }else if (arvore.getTipo().equals("Limoeiro Siciliano")) {
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.siciliano));
+                                }else if (arvore.getTipo().equals("Macieira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                }else if (arvore.getTipo().equals("Mangueira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                } else if (arvore.getTipo().equals("Pessegueiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.peach));
+                                } else if (arvore.getTipo().equals("Tamarindeiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.tamarindo));
                                 }else{
                                     System.out.println("Sem icon");
                                 }
@@ -234,18 +270,36 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                     LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
                                     MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
 
-                                    if (arvore.getTipo().equals("Laranjeira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
-                                    } else if (arvore.getTipo().equals("Macieira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
-                                    } else if (arvore.getTipo().equals("Mangueira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                    if (arvore.getTipo().equals("Ameixeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.plum));
+                                    } else if (arvore.getTipo().equals("Amoreira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.raspberry));
+                                    } else if (arvore.getTipo().equals("Cerejeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.cherry));
                                     } else if (arvore.getTipo().equals("Coqueiro")){
                                         marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
-                                    }else if (arvore.getTipo().equals("Jabuticabeira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
                                     }else if (arvore.getTipo().equals("Goiabeira")){
                                         marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                    }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                    }else if (arvore.getTipo().equals("Jaqueira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jackfruit));
+                                    } else if (arvore.getTipo().equals("Kiwizeiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.kiwi));
+                                    } else if (arvore.getTipo().equals("Laranjeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                    }else if (arvore.getTipo().equals("Limoeiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.lime));
+                                    }else if (arvore.getTipo().equals("Limoeiro Siciliano")) {
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.siciliano));
+                                    }else if (arvore.getTipo().equals("Macieira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                    }else if (arvore.getTipo().equals("Mangueira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                    } else if (arvore.getTipo().equals("Pessegueiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.peach));
+                                    } else if (arvore.getTipo().equals("Tamarindeiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.tamarindo));
                                     }else{
                                         System.out.println("Sem icon");
                                     }
@@ -284,18 +338,36 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                               
                                 MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
 
-                                if (arvore.getTipo().equals("Laranjeira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
-                                } else if (arvore.getTipo().equals("Macieira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
-                                } else if (arvore.getTipo().equals("Mangueira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                if (arvore.getTipo().equals("Ameixeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.plum));
+                                } else if (arvore.getTipo().equals("Amoreira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.raspberry));
+                                } else if (arvore.getTipo().equals("Cerejeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.cherry));
                                 } else if (arvore.getTipo().equals("Coqueiro")){
                                     marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
-                                }else if (arvore.getTipo().equals("Jabuticabeira")){
-                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
                                 }else if (arvore.getTipo().equals("Goiabeira")){
                                     marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                }else if (arvore.getTipo().equals("Jaqueira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jackfruit));
+                                } else if (arvore.getTipo().equals("Kiwizeiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.kiwi));
+                                } else if (arvore.getTipo().equals("Laranjeira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                }else if (arvore.getTipo().equals("Limoeiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.lime));
+                                }else if (arvore.getTipo().equals("Limoeiro Siciliano")) {
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.siciliano));
+                                }else if (arvore.getTipo().equals("Macieira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                }else if (arvore.getTipo().equals("Mangueira")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                } else if (arvore.getTipo().equals("Pessegueiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.peach));
+                                } else if (arvore.getTipo().equals("Tamarindeiro")){
+                                    marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.tamarindo));
                                 }else{
                                     System.out.println("Sem icon");
                                 }
@@ -327,18 +399,36 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                     LatLng location = new LatLng(arvore.getLat(), arvore.getLongi());
                                     MarkerOptions marker = new MarkerOptions().position(location).title(arvore.getTipo());
 
-                                    if (arvore.getTipo().equals("Laranjeira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
-                                    } else if (arvore.getTipo().equals("Macieira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
-                                    } else if (arvore.getTipo().equals("Mangueira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                    if (arvore.getTipo().equals("Ameixeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.plum));
+                                    } else if (arvore.getTipo().equals("Amoreira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.raspberry));
+                                    } else if (arvore.getTipo().equals("Cerejeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.cherry));
                                     } else if (arvore.getTipo().equals("Coqueiro")){
                                         marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.coconut));
-                                    }else if (arvore.getTipo().equals("Jabuticabeira")){
-                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
                                     }else if (arvore.getTipo().equals("Goiabeira")){
                                         marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.guava));
+                                    }else if (arvore.getTipo().equals("Jabuticabeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jabuticaba));
+                                    }else if (arvore.getTipo().equals("Jaqueira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.jackfruit));
+                                    } else if (arvore.getTipo().equals("Kiwizeiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.kiwi));
+                                    } else if (arvore.getTipo().equals("Laranjeira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.orange));
+                                    }else if (arvore.getTipo().equals("Limoeiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.lime));
+                                    }else if (arvore.getTipo().equals("Limoeiro Siciliano")) {
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.siciliano));
+                                    }else if (arvore.getTipo().equals("Macieira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.apple));
+                                    }else if (arvore.getTipo().equals("Mangueira")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mango));
+                                    } else if (arvore.getTipo().equals("Pessegueiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.peach));
+                                    } else if (arvore.getTipo().equals("Tamarindeiro")){
+                                        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.tamarindo));
                                     }else{
                                         System.out.println("Sem icon");
                                     }

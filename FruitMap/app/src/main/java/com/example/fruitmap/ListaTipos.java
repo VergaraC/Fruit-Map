@@ -32,13 +32,22 @@ public class ListaTipos extends AppCompatActivity {
         final double lLong = bundle.getDouble("longitude");
 
         list_items = new ArrayList<>();
+        list_items.add(new Item(R.drawable.plum, "Ameixeira"));
+        list_items.add(new Item(R.drawable.raspberry, "Amoreira"));
         list_items.add(new Item(R.drawable.cherry, "Cerejeira"));
         list_items.add(new Item(R.drawable.coconut, "Coqueiro"));
         list_items.add(new Item(R.drawable.guava, "Goiabeira"));
         list_items.add(new Item(R.drawable.jabuticaba, "Jabuticabeira"));
+        list_items.add(new Item(R.drawable.jackfruit, "Jaqueira"));
+        list_items.add(new Item(R.drawable.kiwi, "Kiwizeiro"));
         list_items.add(new Item(R.drawable.orange, "Laranjeira"));
+        list_items.add(new Item(R.drawable.lime, "Limoeiro"));
+        list_items.add(new Item(R.drawable.siciliano, "Limoeiro Siciliano"));
         list_items.add(new Item(R.drawable.apple, "Macieira"));
         list_items.add(new Item(R.drawable.mango, "Mangueira"));
+        list_items.add(new Item(R.drawable.peach, "Pessegueiro"));
+        list_items.add(new Item(R.drawable.tamarindo, "Tamarindeiro"));
+
 
 
         mRecyclerView = findViewById(R.id.recycler);
