@@ -11,21 +11,38 @@
 
     <string-array name="trees">
         <item>All</item>
+        <item>Abacateiro</item>
         <item>Amexeira</item>
         <item>Amoreira</item>
+        <item>Bananeira</item>
+        <item>Cacaueiro</item>
+        <item>Caramboleira</item>
+        <item>Castanheiro</item>
         <item>Cerejeira</item>
         <item>Coqueiro</item>
+        <item>Damasqueiro</item>
+        <item>Figueira</item>
+        <item>Fruta do Conde</item>
         <item>Goiabeira</item>
         <item>Jabuticabeira</item>
         <item>Jaqueira</item>
         <item>Kiwizeiro</item>
         <item>Laranjeira</item>
+        <item>Lichieira</item>
         <item>Limoeiro</item>
         <item>Limoeiro Siciliano</item>
         <item>Macieira</item>
+        <item>Mamoeiro</item>
         <item>Mangueira</item>
+        <item>Maracujazeiro</item>
+        <item>Meloeiro</item>
+        <item>Mirtilos</item>
+        <item>Morangueiro</item>
+        <item>Pereira</item>
         <item>Pessegueiro</item>
-        <item>Tamarindeiro</item>
+        <item>Pimenteiro</item>
+        <item>Pessegueiro</item>
+        <item>Pitaya</item>
     </string-array>
 
     <string-array name="grades">
