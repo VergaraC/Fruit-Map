@@ -32,20 +32,37 @@ public class ListaTipos extends AppCompatActivity {
         final double lLong = bundle.getDouble("longitude");
 
         list_items = new ArrayList<>();
+        list_items.add(new Item(R.drawable.avocado, "Abacateiro"));
         list_items.add(new Item(R.drawable.plum, "Ameixeira"));
         list_items.add(new Item(R.drawable.raspberry, "Amoreira"));
+        list_items.add(new Item(R.drawable.banana, "Bananeira"));
+        list_items.add(new Item(R.drawable.cocoa, "Cacaueiro"));
+        list_items.add(new Item(R.drawable.starfruit, "Caramboleira"));
+        list_items.add(new Item(R.drawable.brazilnut, "Castanheiro"));
         list_items.add(new Item(R.drawable.cherry, "Cerejeira"));
         list_items.add(new Item(R.drawable.coconut, "Coqueiro"));
+        list_items.add(new Item(R.drawable.apricot, "Damasqueiro"));
+        list_items.add(new Item(R.drawable.fig, "Figueira"));
+        list_items.add(new Item(R.drawable.durian, "Fruta do Conde"));
         list_items.add(new Item(R.drawable.guava, "Goiabeira"));
         list_items.add(new Item(R.drawable.jabuticaba, "Jabuticabeira"));
         list_items.add(new Item(R.drawable.jackfruit, "Jaqueira"));
         list_items.add(new Item(R.drawable.kiwi, "Kiwizeiro"));
         list_items.add(new Item(R.drawable.orange, "Laranjeira"));
+        list_items.add(new Item(R.drawable.lychee, "Lichieira"));
         list_items.add(new Item(R.drawable.lime, "Limoeiro"));
         list_items.add(new Item(R.drawable.siciliano, "Limoeiro Siciliano"));
         list_items.add(new Item(R.drawable.apple, "Macieira"));
+        list_items.add(new Item(R.drawable.papaya, "Mamoeiro"));
         list_items.add(new Item(R.drawable.mango, "Mangueira"));
+        list_items.add(new Item(R.drawable.passion_fruit, "Maracujazeiro"));
+        list_items.add(new Item(R.drawable.melon, "Meloeiro"));
+        list_items.add(new Item(R.drawable.blueberry, "Mirtilos"));
+        list_items.add(new Item(R.drawable.strawberry, "Morangueiro"));
+        list_items.add(new Item(R.drawable.pears, "Pereira"));
         list_items.add(new Item(R.drawable.peach, "Pessegueiro"));
+        list_items.add(new Item(R.drawable.paprika, "Pimenteiro"));
+        list_items.add(new Item(R.drawable.dragon_fruit, "Pitaya"));
         list_items.add(new Item(R.drawable.tamarindo, "Tamarindeiro"));
 
 
